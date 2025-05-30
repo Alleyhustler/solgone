@@ -1,0 +1,160 @@
+<html lang="en" id="top">
+
+
+<!-- Mirrored from neongod.neocities.org/administration by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 30 May 2025 14:32:53 GMT -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landed: Administration office</title>
+  <meta name="robots" content="noai, noimageai">
+  <meta name="description" content="Personal website about retro computers, restoration and preservation of old tech.">
+  <meta name="keywords" content="Commodore Amiga, Amiga 500, Tracker music, Links, About me, About page">
+  <script src="applySavedFont.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body background="images/stars.gif" text=#ffff99 link=#e6e600 vlink=#b37700>
+
+  <div class="logo">
+    <img src="images/The Solgone World.png" alt="planet neon title">
+    <img src='images/orb_lavender.gif' alt="Orb divider">
+  </div>
+
+  <div class="center-container">
+    <div class="titlebox">
+      <img src="images/fire.gif">
+      <span>Administration office</span>
+      <img src="images/fire.gif">
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="left-column column">
+      <p><a href="index.html"><b>Back to Orbit</b></a></p>
+      <img src="images/star.gif">
+      <div id="font-selector">
+        <p><label for="fonts">Select Font:</label></p>
+        <select id="fonts">
+          <option value="amiga">Amiga</option>
+          <option value="macintosh">Macintosh</option>
+        </select>
+      </div>
+      <div class="image-container">
+        <p>Building complex:</p>
+        <img src="images/base-administration.gif"><br>
+        <p>Base location on planet:</p>
+        <img src="images/base-location-admin.gif">
+        <p>Officer in charge:</p>
+        <img src="images/me.gif" width="200px">
+        <p>Detected threat:</p>
+        <img src="images/alienbreed.gif" width="200px">
+      </div>
+    </div>
+
+    <div class="right-column column">
+      <h1>Welcome to Planet Neon!</h1>
+      <p>My home planet floating around in cyberspace. Here you can find various topics that interests me, including vintage
+        computers like the Commodore Amiga or the Macintosh 68k, music, physical media (mainly cassette tapes and CDs), programming,
+        games, game development and the earlier web.
+      </p>
+      <h2>About Me</h2>
+      <p>I've been using the pseudonym <b>neongod</b> since the 90s and still think it sounds cool. It came from an old
+        music module’s title I found on a computer magazine cover disk back then. Can’t find it anymore though, so
+        unfortunately I've no idea who made it. I'm a software engineer, retro computer nerd, hobby gamedev and
+        a dad, not necessarily in this order. I've been hanging out online and around computer geeks since my
+        youth, mostly on IRC and web forums, but also IRL in computer clubs and demoscene parties.</p>
+      <div class="inline-content">
+        <p>Currently feeling: <a href="https://www.imood.com/users/neongod"><img
+              src="../moods.imood.com/display/uname-neongod/bg-EAEAEA/imood.gif"
+              alt="The current mood of neongod at www.imood.com" border="0"></a></p>
+      </div>
+      <h3>Contact</h3>
+      <p>I'm <a href="https://mstdn.social/@neongod" target="_blank">@neongod@mstdn.social</a> on <b>Mastodon</b> and
+        you can often find me with the same nick on <b>IRC</b> (<a href="https://webchat.ircnet.net/"
+          target="_blank">IRCnet</a> and <a href="https://libera.chat/" tartget="_blank">Libera.Chat</a>). I'm also
+        checking into the <a href="https://www.particles.org/particlesbbs/" tartget="_blank">Particles BBS</a> from
+        time to time. If you just want to say hi, you can also visit my <a href="http://neongod.atabook.org/"
+          tartget="_blank">guestbook</a>.</p>
+      <div class="inline-content">
+        <p>Or drop an<a href="mailto:neongod at duck.com"><img src="images/mail.gif"></a></p>
+      </div>
+
+      <h2 id="aboutsite">About this site</h2>
+      <p>I imagined this website as the view from your spaceship in <a
+          href="https://en.wikipedia.org/wiki/Frontier:_Elite_II">Frontier Elite II</a>, when you
+        approach a planet. There are several locations to descend to, each base offers something unique. I tried to keep
+        it intentionally simple and use the aestetics of the late 90s web I appreciate so much. I don't like what the Internet has become,
+        where most pages look the same and as if they'd be pages from a magazine. After many years without a personal
+        page, I decided to create my own site again.</p>
+      <p>I find myself using vintage tech more often nowadays and longing for simpler times, when technology and the web
+        were still fun. I decided to make the site by hand, like I did 20 years ago, with a text editor. It's been
+        a while since I coded HTML and CSS by hand, and my goal with this is to relearn, but also to question and
+        unlearn.</p>
+      <h3>Under the hood</h3>
+      <p>The planet neon logo uses the Cuddly bitmap font from the <a
+          href="https://www.jottacloud.com/s/0302aee1480c7f444dfa26008375b07b454">AmigaFonts
+          package</a>. The site is using the <a href="https://github.com/rewtnull/amigafonts">Topaz
+          Amiga</a> font or the Machintosh Charcoal font (if selected). For the planet graphics I used the amazing tools
+        made
+        by <a href="https://deep-fold.itch.io/">Deep-fold</a>, the spaceship is from Frontier Elite II,
+        while for the base graphics I used Buch's and rubberduck's <a
+          href="https://opengameart.org/content/colony-sim-extended-version">Colony Sim assets</a>.</p>
+      <p>My original idea was to aim for HTML 2.0 to be fully compatible with old computers, as I sometimes browse the
+        web from my vintage machines, but then I realized that Neocities has SSL enabled by default, which wouldn't work
+        on most old
+        machines anyway without a proxy.
+      </p>
+      <p>The main page uses CSS and JavaScript to scale the planet image and the image map, and redirect to a simple
+        version in case of an old browser is detected.
+        It also falls back to show a simple text menu if there is no JavaScript support.</p>
+      <img src="images/netscape-ibrowse.gif">
+      <h3>Navigation</h3>
+      <p>There are three levels of navigation. Planet -> Base -> Articles. <b>Back to Orbit</b> always takes you back to
+        the main page. <b>Back to Base</b> takes you, well... back to the Base.</p>
+      <p>The planet image on the main page is 1000px wide. The <a href="simple.html">simple version</a> has an 500px
+        planet image, so that it fits even on old computers with a lower resolution.
+      <div class="inline-content">
+        <p>Main articles are indicated with red <img src="images/bullet-red.gif"></p>
+        <p>Sub-sections within articles are marked with yellow <img src="images/bullet-yellow.gif"> bullets.</p>
+        <p>Articles and links with a New <img src="images/new.gif"> sign mean that the article is not older than a few
+          weeks.</p>
+        <p>The updated <img src="images/updated.gif"> sign lets you know that the article was updated since it was
+          originaly posted.</p>
+      </div>
+      <h3>RSS Feed</h3>
+      <a href="rss.xml">Subscribe to the RSS feed!</a>
+      <h3>Like this site?</h3>
+      <p>Feel free to link it!</p>
+      <div class="inline-content">
+        <p>Banner 88x31:
+          <img src="neongod_88x31.gif">
+        </p>
+      </div>
+      <p>
+      <div id="textarea"><textarea
+          style="width: 350px; height: 60px;"><a href="index.html"><img src="neongod_88x31.gif"></a></textarea>
+      </div>
+      </p>
+      <div class="inline-content">
+        <p>Banner 468x60:
+          <img src="neongod_468x60.gif">
+        <p>
+      </div>
+      <div id="textarea"><textarea
+          style="width: 350px; height: 60px;"><a href="index.html"><img src="neongod_468x60.gif"></a></textarea>
+      </div>
+      </p>
+      <div class="inline-content">
+        <p>E-mail it to a friend:<a
+            href="mailto:yourfriend@example.com?, &subject=Check this website out&body=Hi, I found this cool site, check it out: http://neongod.neocities.org"><img
+              class="imgcenter" src="images/sendittofriend.gif"></a></p>
+      </div> 
+      <p align="center"><a href="#top">Back to Top</a></p>
+    </div>
+  </div>
+  <script src="fontswitcher.js"></script>
+</body>
+
+
+<!-- Mirrored from neongod.neocities.org/administration by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 30 May 2025 14:32:57 GMT -->
+</html>

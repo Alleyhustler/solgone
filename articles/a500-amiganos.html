@@ -1,0 +1,337 @@
+<html lang="en" id="top">
+
+<!-- Mirrored from neongod.neocities.org/articles/a500-amiganos by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 30 May 2025 14:33:23 GMT -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landed: The Solana Vanishing Act</title>
+  <meta name="robots" content="noai, noimageai">
+  <meta name="description" content="Personal website about retro computers, restoration and preservation of old tech.">
+  <meta name="keywords" content="Commodore Amiga, Amiga 500, AmigaNOS, KA9Q, AmigaNOS configuration, KA9Q configuration, Amiga 500 Internet setup, Internet Kickstart 1.3, TCP/IP Kickstart 1.3, Workbench 1.3 TCP/IP">
+   <script src="../applySavedFont.js"></script>
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body background="../images/stars.gif" text=#ffff99 link=#e6e600 vlink=#b37700>
+
+  <div class="logo">
+    <img src="../images/The Solgone World.png" alt="planet neon title">
+    <img src='../images/orb_lavender.gif' alt="Orb divider">
+  </div>
+
+  <div class="center-container">
+    <div class="titlebox">
+      <img src="../images/fire.gif">
+      <span>The Solana Vanishing Act</span>
+      <img src="../images/fire.gif">
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="left-column column">
+      <p><a href="../retroshrine.html"><b>Back to Base</b></a></p>
+      <p><a href="../index.html"><b>Back to Orbit</b></a></p>
+      <img src="../images/star.gif">
+      <div id="font-selector">
+        <p><label for="fonts">Select Font:</label></p>
+        <select id="fonts">
+          <option value="amiga">Amiga</option>
+          <option value="macintosh">Macintosh</option>
+        </select>
+      </div>
+      <div class="image-container">
+        <p>Building complex:</p>
+        <img src="../images/base-amiga.gif"><br>
+        <p>Base location on planet:</p>
+        <img src="../images/base-location-amiga.gif">
+      </div>
+    </div>
+
+    <div class="right-column column">
+      <h1>AmigaNOS (KA9Q) TCP/IP configuration</h1>
+      <h2>TCP/IP through serial, between an Amiga 500 and Linux</h2>
+
+      <p>AmigaNOS (or AmigaTCP or KA9Q) is as far as I know the only TCP/IP stack that works on Kickstart 1.3, besides Commodore's AS225 stack (and probably just it's r1 version), made for the <a href="https://bigbookofamigahardware.com/bboah/product.aspx?id=905" target="_blank">A2065</a> Zorro-II Ethernet card for Amiga 2000/3000/4000. By the time the Internet became more widespread, Kickstart 2.0 was already out and the more advanced applications all use the capabilities of the newer OS.</p>
+      <p>AmigaNOS is the port of the TCP/IP stack originally written by Phil Karn (callsign: KA9Q) and was intended for amateur packet radio users. As it's tiny and was written in C, it got ported to many systems. The Amiga port was done by John Heaton.</p>
+
+      <p>Even though there is an extensive original documentation. The Amiga version was maintained by different people over the years, so there are different archives in circulation with different features, folder structure (or the lack of it) and a confusing scattered documentation.</p>
+
+      <h2>AmigaNOS versions</h2>
+      <p><b>AmigaNOS v870227.5</b> - Archive: <a href="http://aminet.net/package/comm/tcp/AmigaTCP" target="_blank">AmigaTCP.lha</a> (AmiNet) -> Uploaded in 1989. An early version from the Fish collection. It lacks many features. No PPP support and the archive contains no documentation and folder structure for the configurations, but it includes the source code.</p>
+      <p><b>AmigaNOS v2.9i</b> - Archive <a href="http://ftp.funet.fi/pub/amiga/datacomm/tcpip/AmigaNOS-2.9i.lha" target="_blank">AmigaNOS-2.9i.lha</a> (Funet FTP) -> The <b>full archive</b>, that contains the configuration files, folders and documentation, but this version has only SLIP support, so PPP won't work with it. I uploaded it to my cloud storage, so <a href="https://www.jottacloud.com/s/03095354bda6f10433aa30b01db0e3aee3c" target="_blank">here is a mirror</a>.</p>
+      <p><b>AmigaNOS v2.9n</b> - Archive: <a href="http://aminet.net/package/comm/tcp/anos29m" target="_blank">anos29m.lha</a> (AmiNet) -> Uploaded in 1993, it's a newer version with SLIP and PPP support. It looks for the NOS-startup script in the AmigaNOS/tcpip/slip directory by default and if a NOS-dialup script is present, it will try to run that first (autodial is on). The archive contains just the executable, nothing else. Yes, the archive name says anos29m and the binary in it 2.9n, it's weird.</p>
+      <p><b>AmigaNOS v2.9k</b> - Archive: <a href="http://aminet.net/package/comm/net/AmigaNOSGW6" target="_blank">AmigaNOSGW6.lzh</a> (AmiNet) -> It's the latest executable done by Graham Walter called AmigaNOSGW. It has SLIP and PPP, Van Jacobson IP header compression support and a partial BSD socket interface impelemtation via an Amiga message port, that allows the use of a Gopher client with AmigaGuide as a browser. It's based on AmigaNOS_v2.9n, but it looks for the NOS-startup script in the same directory where it runs by default. I'm using this version in this guide.</p>
+
+      <p>There is an archive called <a href="http://aminet.net/package/comm/net/AmigaNOS-Tools" target="_blank">AmigaNOS-Tools.lha</a> (AmiNet) that contains some AREXX utilities targetted for radio amateur users.</p>
+
+
+      <h2>AmigaNOS Complete</h2>
+
+      <p>I made a "complete" AmigaNOS archive, which combines the different archives.</p>
+      <ul><li>The folders from John Heaton's archive (AmigaNOS-2.9i.lha)</li>
+        <li>Graham Walter's executable and Gopher client (from AmigaNOSGW6.lzh)</li>
+        <li>The sources from the early AmigaTCP archive</li>
+        <li>Contents of the AmigaNOS-Tools</li>
+        <li>Workbench 1.3 compatible AmigaGuide and AmigaGuide.library has been included</li>
+        <li>A Doc folder has been added, all the documentation found in the different archives moved there, and renamed to clean up things a bit</li>
+        <li>Added an example NOS-Startup script with PPP and SLIP configuration</li>
+        <li>Added icons for the main configuration files and the executable so it can be launched from Workbench</li>
+        <li>In the AmigaNOS.guide I removed the "Commit suicide" text from the Troubleshooting section, as I found it offensive and I was not OK distributing that further</li>
+        <li>Added an Installation.readme with the relevant parts of this guide</li></ul> 
+      <p>You can download the complete archive here:</p>
+      <p><a href="https://www.jottacloud.com/s/030bd8a4914b2a94e0c8cfbe3b3220a10ed" target="_blank">AmigaNOS-Complete.lha</a></p>
+
+
+<br>
+      <h1>AmigaNOS Installation</h1>
+
+      <p>1. Download <a href="https://www.jottacloud.com/s/030bd8a4914b2a94e0c8cfbe3b3220a10ed" target="_blank">AmigaNOS-Complete.lha</a></p>
+      <p>2. Unpack the archive to a location of your choice. For example your Workbench disk (sys:)</p>
+      <p>3. Edit your s:startupII (or startup-sequence) script and add the following section:</p>
+<pre>;Setup AmigaNOS
+assign nos: sys:AmigaNOS
+assign tcpip: nos:tcpip
+assign slip: nos:tcpip/slip</pre>
+      <p>4. Copy the files from AmigaNOS/c to your c: directory</p>
+      <p>5. Copy the files from AmigaNOS/Libs to your libs: directory.</p>
+      <p>6. Reboot, so the assigns are set</p>
+
+      <p><i>Note: You can put the contents of the AmigaNOS-Complete archive on an empty floppy disk (excluding the documentation, the sources and AmigaGuide, so it fits on a single floppy) and use it on a floppy only system after booting from a Workbench 1.3 disk. Add the necessary assigns manually. Having two floppy drives is really recommended in this scenario.</i></p>
+
+      <h2>Configure AmigaNOS PPP (Point-To-Point) connection</h2> 
+
+      <p>Now you have AmigaNOS installed. The AmigaNOS/TCPIP directory contains a script called <b>NOS-startup</b>. The contents of this file gets executed when you start AmigaNOS (if you don't specify another directory where to look for the script with the -d argument ). You can also start AmigaNOS without a script, but then you'll need to enter the commands to configure the network connection manually every time.</p> 
+
+      <p>Open the AmigaNOS/TCPIP/NOS-Startup script in a text editor and change the configuration according to your needs and your network. My script has the following settings:</p>
+<pre>autodial off
+ip address 10.0.0.2
+hostname a500
+attach asy serial.device 0 ppp ppp0 4096 1500 9600c  
+route add default ppp0 10.0.0.1
+domain addserver 10.0.0.1
+start echo
+start ping
+#start telnet
+#start ftp
+#start ttylink
+echo accept
+ppp activeopen ppp0
+ifconfig ppp0
+ppp status ppp0
+#domain trace on</pre>
+
+    <p>In the first line we turn off autodial, so that the NOS-Dial script is not executed. We then set the IP address of the Amiga. I'm using 10.0.0.2 as the Amiga's address and 10.0.0.1 will be the RaspberryPi's PPP interface address. It's arbitrary, you can pick something else, just be consistent and use the same addresses on the Linux side. In theory you can even use unique IPs from the range of your main local network too (which is 192.168.10.x in my case), but it's a good idea to separate the two. The second line sets the hostname of the Amiga. The next important line is the attach, which configures the interface. AmigaNOS supports SLIP and PPP, I'm using PPP in this example. The command looks like this:<br>
+    <pre>attach asy &lt;device&gt; &lt;unit&gt; &lt;mode&gt; &lt;if name&gt; &lt;buffer size&gt; &lt;MTU&gt; &lt;baud&gt;</pre>
+    The values I set:<br>
+    asy - it's always asy, don't ask why<br>
+    serial.device - the device to use<br>
+    0 - unit number of the device<br>
+    ppp0 - my choice for the name for the ppp interface, it could be "nos" or anything else<br>
+    4096 - buffer size<br>
+    1500 - MTU (Max Trasmission Unit) size<br>
+    9600 - baud rade<br>
+    c - the last character after the baud rate sets RTS/CTS</p>
+    <p>With "route add" command we add the IP address of the RaspberryPi as the default route for the ppp0 interface. We set DNS servers to the Raspberry Pi's ppp0 interface. Then we start some services. These are services that we provide from the Amiga, so they're the ones where the Amiga will act as a server and accept incoming packets. Then we activate the ppp connection and print the interface settings and the status of the connection. If you want to enable DNS traces, you can uncomment the last line.</p> 
+    <p>Note: The ppp command has two modes: activeopen and passiveopen. Which one to use depends on how the pppd on the Linux side is configured (see the passive and silent parameters in the Linux pppd config file below).</p>
+
+    <p>Open the AmigaNOS/TCPIP/domains.txt file in a text editor and replace the contents of it with the following line:</p>
+<pre>&lt;hostname of your LinuxPC&gt; IN A 10.0.0.1</pre>
+    <p>Note: There is an ftpusers file, which contains the username, password, path and permission for a user connecting to the Amiga's FTP server. You can configure it this way:</p>
+<pre>&lt;user&gt; &lt;password&gt; &lt;directory&gt; &lt;permission&gt;</pre>
+<p>Example:</p>
+<pre>amiga amiga123 TCPIP:PUBLIC 1</pre>
+
+    <h2>Configure PPPd  on Linux</h2>
+    <p>It's time to configure the Linux side. I suggest following my <a href="a500-online-comprehensive-guide.html#amiga-pc-ppp">Amiga-PC PPP configuration</a> guide, where I set up the PPP connection between a RaspberryPi and a Workbench 3.1 running the Miami TCP/IP stack. For AmigaNOS however, we're going to need slightly different pppd settings, so set the following configuration in the /etc/ppp/amiga config file:</p>
+<pre>debug
+nodetach
+
+# Serial device
+/dev/ttyUSB0
+
+# Speed of the serial line, this is probably maximum unless you have 
+# a serial board (set the same as on the Amiga side!)
+#2400
+#19200
+9600
+#38400
+#57600
+#115200
+
+# Require the peer to authenticate itself before allowing network
+# packets to be sent or received.
+noauth
+
+# Don't use the modem control lines.
+local
+
+# Local and remote IP addresses
+#192.168.10.201:192.168.10.202
+10.0.0.1:10.0.0.2
+
+# Set the interface netmask 
+netmask 255.255.255.255
+
+# Enables the "passive" option in the LCP.  With this option, pppd will
+# attempt to initiate a connection; if no reply is received from the
+# peer, pppd will then just wait passively for a valid LCP packet from
+# the peer (instead of exiting, as it does without this option).
+passive
+
+# Add an entry to this system's ARP [Address Resolution Protocol]
+# table with the IP address of the peer and the Ethernet address of this
+# system.
+proxyarp
+
+# Do not exit after a connection is terminated; instead try to reopen
+# the connection.
+persist
+
+# Disable Address/Control compression negotiation (use default, i.e.
+# address/control field disabled).
+-ac
+
+# Disable protocol field compression negotiation (use default, i.e.
+# protocol field compression disabled).
+-pc
+
+# Disable asyncmap negotiation (use the default asyncmap, i.e. escape
+# all control characters).
+#-am
+
+# Disable negotiation of Van Jacobson style IP header compression (use
+# default, i.e. no compression).
+-vj
+
+# Disable CCP compression and IPv6CP
+nobsdcomp
+noccp
+noipv6</pre>
+
+<p>As you can see, there is a slight difference compared to the guide for Miami, for AmigaNOS we're setting the baud rate to 9600, and disabling a bunch of compression negotiation. The rest of the <a href="a500-online-comprehensive-guide.html#amiga-pc-ppp">Amiga-PC PPP configuration</a> guide for the Raspberry Pi side to set up the IP forwarding and the pppd as a service pretty much still applies.</p>
+
+<h2>Installing Dnsmasq</h2>
+<p>This might not be strictly necessary as in theory DNS requests should also be forwarded if you enabled IP forwarding and set up the IP tables rules correctly, but for me for some reason while it worked well with Miami, it didn't work with AmigaNOS. I could see in tcpdump that the Amiga sent the DNS request to the Raspberry Pi, but it couldn't process it:</p>
+<pre>18:00:53.311872 IP 10.0.0.2.1024 > 10.0.0.1.domain: 268+ A? www.google.com. (32)
+18:00:53.312034 IP 10.0.0.1 > 10.0.0.2: ICMP 10.0.0.1 udp port domain unreachable, length 68</pre>
+
+<p>The solution was to install Dnsmasq and force it to forward all DNS requests to the router. Here is how to do it.</p>
+<p>Install Dnsmasq:</p>
+<pre>sudo apt install dnsmasq</pre>
+<p>Open it's configuration file:</p>
+<pre>sudo nano /etc/dnsmasq.conf</pre>
+<p>Add the following lines:</p>
+<pre>interface=ppp0 
+listen-address=10.0.0.1 # Raspberry Pi's address
+server=192.168.10.1  # Forward DNS queries to your router
+no-resolv  # Prevent dnsmasq from using /etc/resolv.conf</pre>
+
+<p>Restart Dnsmasq</p>
+<pre>sudo systemctl restart dnsmasq</pre>
+
+<p>Once the ppp interface and dnsmasq is up and running on the Raspberry Pi, check the routing table, it should now contain a route for the ppp0 interface:</p>
+<pre>route -n
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+0.0.0.0         192.168.10.1    0.0.0.0         UG    202    0        0 eth0
+10.0.0.2        0.0.0.0         255.255.255.255 UH    0      0        0 ppp0
+192.168.10.0    0.0.0.0         255.255.255.0   U     202    0        0 eth0</pre>
+
+<p>We can now start AmigaNOS!</p>
+
+<h2>Launching AmigaNOS</h2>
+<p>To start AmigaNOS either click on the icon of the binary or start it from the CLI:</p>
+<pre>cd tcpip:
+amiganos</pre>
+<p>An AmigaNOS commandline window will open and it should execute the settings from the nos-startup script, resulting in a ppp status command in the end. Wait a few seconds and type in the "ppp status ppp0" command again, to see if the connection is ready.
+<p><i>Note: If you want to use a different startup script, you can specify a different folder for the script location with the -d argument. If the autodial parameter is set to ON, AmigaNOS will try to exectute the NOS-Dial script instead.</i></p>
+<p>Now you should be able to use both FTP and Telnet towards the RaspberryPi's IP address. Type:</p> 
+<pre>telnet 10.0.0.1</pre><p>or</p> 
+<pre>ftp 10.0.0.1</pre>
+
+<p><img src="../images/amiganos-2.jpg"></p>
+<p><img src="../images/amiganos-3.jpg"></p>
+
+<p>Try ping-ing an exteral domain name:</p>
+<pre>ping google.com</pre>
+<p><img src="../images/amiganos-4.jpg"></p>
+
+<p>Connect to Aminet:</p>
+<pre>ftp ftp.aminet.net</pre>
+<p><img src="../images/amiganos-5.jpg"></p>
+
+<h2>Some help in using the command-line</h2>
+<p>By starting telnet or ftp, a new session window will open. You can have multiple sessions in AmigaNOS. To go back to the command-line window press the Clrl + ^ key. It will switch back to the command-line window, where you can start another session, or list and manage the running sessions with the session (or "se" for short) command. To stop an FTP session for example you can use:</p>
+<pre>abort &lt;session #&gt;</pre>
+<p>To see what commands are available, type:</p>
+<pre>?</pre>
+<p>For help on a particular command, type the command name before the "?". Example:</p>
+<pre>domain ?</pre>
+<p>For even more help, use the help &lt;command&gt;. Example:</p>
+<pre>help domain</pre>
+<p>This will open the relevant section for that command from the documentation. See the full documentation for more details.</p>
+<p>To exit a running Telnet session, type "exit" in the Telnet terminal. To quit the FTP client, type "quit" in the FTP window. To stop AmigaNOS, type "exit" in the command-line window.</p>
+
+<h2>Gopher and AmigaGuide</h2>
+<p>Graham Walter's AmigaNOS (AmigaNOSGW6, v2.9k) has been extended with the possibility to run a Gopher client and use AmigaGuide as a "browser". If you have AmigaGuide installed (you copied the amigaguide binary from AmigaNOS:C to C: and AmigaNOS:Libs to Libs:), you can issue the command from the AmigaNOS commandline:</p>
+<pre>client gopher</pre>
+<p>The Gopher client will start and open a new window with AmigaGuide.</p>
+
+<p><img src="../images/amiganos-6.jpg"></p>
+
+<p>Click the Enter Gopher World button and select an address from the list. The list is stored in the tcpip:spool/gopher/bookmarks file. You can edit it to add new addresses or replace old, broken ones.</p>
+
+<p><img src="../images/amiganos-7.jpg"></p>
+
+<p>Enjoy browsing the Gopherspace on your Amiga 500!</p>
+<p><img src="../images/amiganos-8.jpg"></p>
+
+<br><br>
+
+<h1>Alternative way</h2>
+
+<h2>Configure AmigaNOS SLIP connection</h2> 
+
+<p>Even though SLIP was pretty much replaced by PPP for direct point-to-point connections, it's possible to use SLIP as well.</p>
+<p>In the AmigaNOS NOS-startup script you have to change just a few things. Specify slip in the attach command, change the interface name to sl0 and the MTU size to 576, remove the letter c from end of the baud value. Update the ppp0 interface name in the route commands with sl0, then remove the last two ppp commands. The changed commands:</p>
+<pre>
+attach asy serial.device 0 slip sl0 4096 576 9600  
+route add 10.0.0.1 sl0
+route default sl0 10.0.0.1
+</pre>
+
+<h2>Configure SLIP on RaspberryPi/Linux</h2>
+<p>First, bring down the ppp0 interface if you configured it before:</p>
+<pre>sudo systemctl stop ppp-amiga</pre>
+<p>Then enable SLIP with:</p>
+<pre>sudo modprobe slip</pre>
+<p>Now you can configure it with:</p>
+<pre>sudo slattach -v -d -p slip -s 9600 /dev/ttyUSB0 &</pre>
+<p>Where 9600 is the baud rate and /dev/ttyUSB0 is the serial device in case you're using a USB-To-Serial adapter.</p>
+<p>Running the command should give the following output:</p>
+<pre>slattach: tty_open: looking for lock
+slattach: tty_open: trying to open /dev/ttyUSB0
+slattach: tty_open: /dev/ttyUSB0 (fd=3)
+slattach: tty_set_speed: 9600
+slattach: tty_set_databits: 8
+slattach: tty_set_stopbits: 1
+slattach: tty_set_parity: N
+slip started on /dev/ttyUSB0 interface sl0</pre>
+<p>Now we can configure the IP addresses for the sl0 interface and bring it up:</p>
+<pre>sudo ifconfig sl0 10.0.0.1 pointopoint 10.0.0.2 up</pre>
+<p>Set the MTU value to match what we configured in AmigaNOS:</p>
+<pre>sudo ifconfig sl0 mtu 576</pre>
+<p>What's left to do now is to configure the forwarding between the wlan0 (wifi) interface and the sl0 (slip) interface:</p>
+<pre>sudo iptables -A FORWARD -o wlan0 -i sl0 -s 10.0.0.0/24 -m conntrack --ctstate NEW -j ACCEPT 
+sudo iptables -A FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT 
+sudo iptables -A POSTROUTING -t nat -j MASQUERADE</pre>
+
+      <p align="center"><a href="#top">Back to Top</a></p>
+    </div>
+  </div>
+  <script src="../fontswitcher.js"></script>
+</body>
+
+
+<!-- Mirrored from neongod.neocities.org/articles/a500-amiganos by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 30 May 2025 14:33:30 GMT -->
+</html>

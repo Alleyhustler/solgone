@@ -1,0 +1,304 @@
+html {
+  scroll-behavior: smooth;
+}
+
+@font-face {
+  font-family: macintosh;
+  src: url(fonts/Charcoal.ttf);
+}
+
+@font-face {
+  font-family: amiga;
+  src: url(fonts/Topaz_a1200_v1.0.ttf);
+}
+
+body {
+  font-family: amiga;
+  color: #ffff99;
+}
+
+a {
+  color: #e6e600;
+}
+
+a:visited {
+  color: #b37700;
+}
+
+h1 {
+  font-weight: normal;
+}
+
+b {
+  font-weight: normal;
+  color: white;
+}
+
+h2,
+h3 {
+  padding-top: 25px;
+  padding-bottom: 5px;
+  font-weight: normal;
+}
+
+ul li {
+  line-height: 1.8;
+}
+
+pre {
+  background-color: #140033;
+  padding: 10px;
+  border-radius: 5px;
+  font-family: monospace;
+  color: #ffffdd;
+  overflow-x: auto;
+  white-space: pre-wrap;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 30px;
+  /* Space between columns */
+}
+
+.column {
+  padding: 20px;
+  box-sizing: border-box;
+  border: 3px dotted;
+  /* Dotted border */
+  border-radius: 10px;
+  /* Rounded corners */
+  background: url(semi-transparent.png)
+}
+
+/* Left column styling */
+.left-column {
+  flex: 0 0 25%;
+  text-align: center;
+}
+
+.image-container {
+  display: block;
+  margin-top: 20px;
+}
+
+/* Right column styling */
+.right-column {
+  flex: 1;
+  /* Takes remaining space */
+}
+
+/* Add extra space between text and images */
+.right-column h3 {
+  margin-bottom: 20px;
+  /* Add space below the heading */
+}
+
+.right-column p {
+  margin-bottom: 20px;
+  /* Add space below the paragraph */
+  line-height: 1.8;
+}
+
+.right-column img {
+  display: block;
+  /* Make images block-level elements */
+  margin: 10px auto;
+  /* Center the images horizontally */
+  max-width: 100%;
+  /* Make images responsive */
+  height: auto;
+  /* Maintain aspect ratio */
+}
+
+/* Do not center images inside dl, dt, or dd tags */
+.right-column dl dt img,
+.right-column dl dd img {
+  margin: 0;
+  /* Remove margin to prevent centering */
+  display: inline;
+  /* Keep images inline to follow the normal flow */
+  width: auto;
+  /* Allow image size to be controlled naturally */
+}
+
+.right-column dt {
+  margin-bottom: 0.3em;
+}
+.right-column dd {
+  margin-bottom: 1em;
+}
+
+.right-column .inline-content {
+  margin-bottom: 20px;
+  /* Add space below each inline-content block */
+}
+
+.right-column .inline-content p {
+  display: flex;
+  /* Align text and image horizontally */
+  align-items: center;
+  /* Vertically align text and images */
+  margin: 0;
+  /* Reset paragraph margins for alignment */
+}
+
+.right-column .inline-content p img {
+  height: auto;    /* Maintain aspect ratio */
+  margin: 0px 10px 0px 10px;       /* Remove default margins for proper alignment */
+}
+
+.right-column small {
+  display: inline-block; /* Ensures small behaves like a content box for alignment */
+  text-align: center; /* Centers the text inside the small tag */
+  width: 100%; /* Takes up full width of the parent for centering effect */
+}
+
+.image-row {
+  display: flex;
+  justify-content: center; /* Aligns images to the center */
+  gap: 20px; /* Adjusts space between images */
+  margin: 0 auto; /* Centers the entire row if needed */
+}
+.image-row img {
+  max-width: 100%; /* Ensures responsive scaling */
+  height: auto; /* Keeps aspect ratio */
+}
+
+/* Responsive layout for smaller screens */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .left-column,
+  .right-column {
+    flex: 1 100%;
+    /* Full width on mobile */
+  }
+
+  .image-container {
+    display: none;
+    /* Hide the entire image container */
+  }
+}
+
+/* Title box styling */
+.center-container {
+  display: flex;
+  justify-content: center;
+  /* Centers content horizontally */
+  align-items: center;
+  /* Centers content vertically */
+  text-align: center;
+  /* Center-aligns text within the container */
+}
+
+.titlebox {
+  display: inline-flex;
+  /* Allows images and text to be in a row */
+  align-items: center;
+  background-color: #45005D;
+  /* Purple background */
+  border-radius: 15px;
+  /* Rounded corners */
+  padding: 10px 20px;
+  /* Padding inside the box */
+  font-size: 2em;
+  /* Text size */
+  gap: 10px;
+  /* Space between images and text */
+  margin-top: 15px;
+  margin-bottom: 30px;
+}
+
+.titlebox img {
+  height: 24px;
+  /* Image height */
+  width: auto;
+  /* Keeps image aspect ratio */
+  vertical-align: bottom;
+  /* Aligns images to bottom of the box */
+}
+
+/* Logo container styling */
+.logo {
+  display: flex;
+  max-width: 100%;
+  flex-direction: column;
+  /* Stack images vertically */
+  align-items: center;
+  /* Center items horizontally */
+  gap: 10px;
+  /* Space between the logo and divider images */
+}
+
+/* Styling for individual images */
+.logo img {
+  max-width: 100%;
+  /* Ensures responsive sizing */
+  height: auto;
+  /* Maintains aspect ratio */
+}
+
+#data {
+  border-radius: 5px 5px 5px 5px;
+  padding: 15px;
+  margin: 15px;
+  background: url(semi-transparent-purple.png)
+}
+
+#data h3 {
+  padding-top: 0px;
+  font-weight: normal;
+}
+
+#data2 {
+  border-radius: 5px 5px 5px 5px;
+  padding: 15px;
+  margin: 15px;
+  background: url(semi-transparent-purple2.png)
+}
+
+#data2 h3 {
+  padding-top: 0px;
+  font-weight: normal;
+}
+
+.scroll-container {
+  width: 350px;
+  overflow: hidden;
+  white-space: nowrap;
+ -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+.scroll-container:hover .scroll-text {
+  animation-play-state: paused;
+}
+
+.scroll-text {
+  display: inline-block;
+  padding-left: 100%;
+  animation: scroll-left 20s linear infinite;
+
+
+
+}
+
+@keyframes scroll-left {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.info p {
+  text-align: center;
+}

@@ -1,0 +1,179 @@
+<html lang="en" id="top">
+
+<!-- Mirrored from neongod.neocities.org/articles/a500-soft-kick-dual-boot by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 30 May 2025 14:34:21 GMT -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landed: The Solana Vanishing Act</title>
+  <meta name="robots" content="noai, noimageai">
+  <meta name="description" content="Personal website about retro computers, restoration and preservation of old tech.">
+  <meta name="keywords" content="Commodore Amiga, Amiga 500, Kickstart ROM, Dual boot, MKick, Soft kick">
+  <script src="../applySavedFont.js"></script>
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body background="../images/stars.gif" text=#ffff99 link=#e6e600 vlink=#b37700>
+
+  <div class="logo">
+    <img src="../images/The Solgone World.png" alt="planet neon title">
+    <img src='../images/orb_lavender.gif' alt="Orb divider">
+  </div>
+
+  <div class="center-container">
+    <div class="titlebox">
+      <img src="../images/fire.gif">
+      <span>The Solana Vanishing Act</span>
+      <img src="../images/fire.gif">
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="left-column column">
+      <p><a href="../retroshrine.html"><b>Back to Base</b></a></p>
+      <p><a href="../index.html"><b>Back to Orbit</b></a></p>
+      <img src="../images/star.gif">
+      <div id="font-selector">
+        <p><label for="fonts">Select Font:</label></p>
+        <select id="fonts">
+          <option value="amiga">Amiga</option>
+          <option value="macintosh">Macintosh</option>
+        </select>
+      </div>
+      <div class="image-container">
+        <p>Building complex:</p>
+        <img src="../images/base-amiga.gif"><br>
+        <p>Base location on planet:</p>
+        <img src="../images/base-location-amiga.gif">
+      </div>
+    </div>
+
+    <div class="right-column column">
+      <h1>Soft-kick and dual boot on an Amiga 500</h1>
+        <p>This is a guide on how you can soft-kick your Amiga 500 to Kickstart 3.1 and if you have a hard drive, how to set up a dual boot system.
+        Note: If you have a dual-kickstart ROM with a hardware switch, you can just skip setting up mkick, and the leave out the lines for the besel utility in the startup-sequence.</p>
+
+        <p>To soft-kick the Amiga 500 to Kickstart 3.1 you'll need 3 things:</p>
+        <ul><li>Amiga 500 with some extra memory (512KByte chip RAM + 512KByte Other RAM is the minimum, but keep in mind that you'll load the new Kickstart ROM to memory, so you will end up having 0.5MB less usable RAM available)</li>
+        <li>Kickstart 3.1 ROM file</li>
+        <li><a href="http://aminet.net/package/util/boot/MKick19">MKick utility</a></li></ul>
+
+        <p>Recommended:</p>
+        <ul>
+            <li>A hard drive (To install Workbench 3.1 and set up a dual boot system)</li>
+            <li><a href="http://aminet.net/package/util/boot/BeSel">Besel utility</a></li>
+        </ul>
+
+        <h2>Floppy Only</h2>
+
+        <p>Get the <a href="https://www.amigaforever.com/">Amiga Forever</a> package which contains all the Kickstart ROMs. Not all of the different ROMs work with mkick, so it can be a trial and error process finding the right one. I succeeded with kickstart40063.a600.</p>
+
+        <p>Have an emulator (WinUAE or FS-UAE) ready on your PC/Mac and configure it so that you have access to a folder on your host system as an Amiga drive. Boot a Workbench 1.3 floppy up.</p>
+        <p>Insert an empty ADF to DF1:</p>
+        <p>Open a new shell and prepare a bootable disk:</p>
+            <pre>install df1:</pre>
+        <p>Unpack the mkick archive in your shared host folder and copy the contents of the mkick directory to the root of the floppy disk.</p>
+        <p>Copy the kickstart40063.a600 ROM file to the root of the floppy disk.</p>
+        <p>Copy the kickstart40063.a600.kshd and kickstart40063.a600.kick files from the KSHD directory to the root of the floppy disk, where the previously copied Kickstart ROM file is. So you should have 3 files there:</p>
+<pre>kickstart40063.a600 -> the actual ROM file
+kickstart40063.a600.kick -> binary file coming from the KSHD directory
+kickstart40063.a600.kshd -> definition file from the KSHD directory
+</pre>
+        <p>Create the directory c, s, libs on the floppy disk.</p>
+        <p>Copy SetPatch and Addbuffers to c and arp.library to the libs directory on the floppy disk:</p>
+        <pre>copy c:SetPatch df1:c
+copy c:Addbuffers df1:c
+copy libs:arp.library df1:libs</pre>
+        <p>Create a startup-sequence file in the s folder of the floppy disk:</p>
+        <pre>ed df1:s/startup-sequence</pre>
+        <p>Put the following lines in the script:</p>
+        <pre>c:SetPatch >NIL: 
+c:Addbuffers df0: 10
+df0:mkick df0:kickstart40063.a600 ;double check it's the right file name!</pre>
+
+        <p>Note: Press the ESC key to enter command mode, type "sa" and enter to save and "q" to quit.</p>
+
+        <p>Transfer the newly prepared Kickstart disk ADF to your Amiga and load it up.</pre>
+
+        <p>Note: Don't forget to remove the disk after Kickstart 3.1 is loaded (and your machine reboots), because if mkick loads again, it will remove the loaded Kickstart and you'll go back to 1.3.</p>
+
+        <h2>Hard Drive</h2>
+
+        <p>If you have a hard drive, you can go one step further and prepare a setup that will dual boot between Workbench 1.3 and 3.1.</p>
+
+        <h3>MKick and Besel</h2>
+
+        <p>Copy the mkick installation, the Kickstart ROM and KSHD files of the floppy you prepared to DH0:mkick/</p>
+
+        <p>Create a DH0:S/start-mkick script file with the following contents (make sure the Kickstart ROM file name matches):</p>
+<pre>echo "Soft-kicking Kickstart 3.1..."
+dh0:mkick/mkick dh0:mkick/kickstart40063.a600</pre> 
+
+        <p>Make the file executable; </p>
+<pre>protect s:start-mkick RWED</pre>
+
+        <p>Unpack the besel utility and copy besel to DH0:c/ and besel.cfg to DH0:s/</p>
+
+         <p>Create a backup of the original besel.cfg in DH0:s/besel.cfg:</p>
+<pre>rename dh0:s/besel.cfg dh0:s/besel.def_cfg</pre>
+         <p>Create a new DH0:s/besel.cfg with the following content:</p>
+<pre>F1 ; This is an entry for function key F1
+s:start-mkick ; This is the script that should be executed</pre>
+
+        <h3>Startup-sequence magic</h3>
+
+        <p>To create a dual boot we'll need two partitions. One for the Workbench 1.3 system (the boot partition), and one for Workbench 3.1. This can be the same as the Work: partition as Workbench 3.1's installer allows you to install the system into a folder. In the example below Workbench 3.1 was installed to DH2, in a folder called WB31.</p>
+
+        <p>Dual boot on Amiga is very easy. Follow these steps:</p>
+
+        <p>First, execute the start-mkick script you made, to soft-kick your system to 3.1 (or switch your Dual-Kickstart ROM to 3.1), then</p>
+        <p>Boot from the Workbench 3.1 install floppy disk and install the system to your desired location. When the install was successful, you can make some changes to your startup-sequence scripts. The system will boot from the partition that has 1.3 first (we will leave this partition as bootable), so we'll have to edit the startup sequence file on that partition.</p>
+
+        <p>Rename the startup-sequence on the 1.3 partition:</p>
+        <pre>rename dh0:s/startup-sequence dh0:s/startup-sequence-1.3</pre>
+
+        <p>Create a new startup-sequence file there:</p>
+        <pre>ed dh0:s/startup-sequence</pre>
+
+        <p>With the following contents:</p>
+        <pre>dh0:c/version graphics.library 37 ; Is the ROM newer than v2.04?
+IF WARN ; NO, older
+    ; Use the following section if you want to soft-kick your system.
+    ; You can remove this part if you have a dual-kickstart ROM.
+    echo "Workbench 1.3 will boot automatically in 3 seconds."
+    echo "Hold F1 for Workbench 3.1"
+    wait 3
+    c:besel c:besel.cfg
+
+    echo "Workbench 1.3 booting..."
+    execute dh0:s/startup-sequence-1.3
+ELSE ; YES, newer
+    echo "Workbench 3.1 booting..."
+    assign >nil: sys: DH1:WB31  
+    assign >nil: c: DH1:WB31/c
+    assign >nil: s: DH1:WB31/s
+    assign >nil: l: DH1:WB31/l
+    assign >nil: libs: DH1:WB31/libs
+    assign >nil: devs: DH1:WB31/devs
+    assign >nil: fonts: DH1:WB31/fonts
+    assign >nil: envarc: DH1:WB31/prefs/env-archive
+    execute DH1:WB31/s/startup-sequence
+ENDIF
+endcli</pre>
+
+        <ul><li>What this will do is to check the graphics.library version.</li>
+        <li>If it's older than what's in Kickstart 2.04, it will print a message to either Wait for Workbench 1.3 or Hold F1 if you want Workbench 3.1.</li> 
+        <li>It will wait 3 seconds, so you have time to read the message and decide, then it will check if you're holding the F1 key with the besel utility.</li>
+        <li>If you don't, the original startup-sequence-1.3 will be executed and Workbench 1.3 will boot normally.</li>
+        <li>If you do, besel will run the start-mkick script, which will soft-kick your machine to Kickstart 3.1 and reboot.</li>
+        <li>After the reboot, the graphics.library version check will run again, but this time it will be newer than 2.04, so you won't be asked anything. The assigns will be changed to point to where you installed Workbench 3.1, and the startup-sequence file of 3.1 will be executed.</li></ul>
+
+        <p>Note: You might get blue colors in 3.1, as the palette is loaded from the boot partition by default. To fix this, simply open the palette preferences, load the defeault palette and save it. Next time the correct 3.1 palette will be loaded.</p>
+      <p align="center"><a href="#top">Back to Top</a></p>
+    </div>
+  </div>
+  <script src="../fontswitcher.js"></script>
+</body>
+
+
+<!-- Mirrored from neongod.neocities.org/articles/a500-soft-kick-dual-boot by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 30 May 2025 14:34:21 GMT -->
+</html>

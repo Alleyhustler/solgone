@@ -1,0 +1,264 @@
+<html lang="en" id="top">
+
+
+<!-- Mirrored from neongod.neocities.org/articles/a500-hdmi-video by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 30 May 2025 14:34:05 GMT -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landed: The Solana Vanishing Act</title>
+  <meta name="robots" content="noai, noimageai">
+  <meta name="description" content="Personal website about retro computers, restoration and preservation of old tech.">
+  <meta name="keywords"
+    content="Commodore Amiga, Amiga 500, HDMI, A520, TV modulator, RGB, S-Video, Upscaler, RetroTINK, OSSC, ODV-GBS-C">
+  <script src="../applySavedFont.js"></script>
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body background="../images/stars.gif" text=#ffff99 link=#e6e600 vlink=#b37700>
+
+  <div class="logo">
+    <img src="../images/The Solgone World.png" alt="planet neon title">
+    <img src='../images/orb_lavender.gif' alt="Orb divider">
+  </div>
+
+  <div class="center-container">
+    <div class="titlebox">
+      <img src="../images/fire.gif">
+      <span>The Solana Vanishing Act</span>
+      <img src="../images/fire.gif">
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="left-column column">
+      <p><a href="../retroshrine.html"><b>Back to Base</b></a></p>
+      <p><a href="../index.html"><b>Back to Orbit</b></a></p>
+      <img src="../images/star.gif">
+      <div id="font-selector">
+        <p><label for="fonts">Select Font:</label></p>
+        <select id="fonts">
+          <option value="amiga">Amiga</option>
+          <option value="macintosh">Macintosh</option>
+        </select>
+      </div>
+      <div class="image-container">
+        <p>Building complex:</p>
+        <img src="../images/base-amiga.gif"><br>
+        <p>Base location on planet:</p>
+        <img src="../images/base-location-amiga.gif">
+      </div>
+    </div>
+
+    <div class="right-column column">
+      <h1>Connecting the Amiga 500 to an HDMI display</h1>
+
+      <p>I got the urge to connect my Amiga 500 to our living room TV, with the goal of playing games together with my
+        family from the couch. The problem is however, that our flat screen TV is fairly new and has only HDMI inputs.
+      </p>
+
+      <p>Lack of connectivity is only part of the problem. Another issue is the supported resolutions. Most Amiga
+        software uses either PAL/NTSC lowres or hires-interlaced resolutions and most modern TVs can't display these
+        correctly, without conversion and processing. Even those that can handle 240p, often interpret it as 480i.</p>
+
+      <p>The Amiga 500 has a Composite out RCA jack (called Mono), which outputs a Black & White signal, and a Video
+        port with a DB23 connector with an RGB signal. There are a number of ways to turn these into something an HDMI
+        TV (or monitor) can handle, but most boil down to two things:<br>
+        1. An upscaler/HDMI converter device<br>
+        2. A way of making the connection between the upscaler and the Amiga, so some sort of cable or adaptor+cable</p>
+
+      <p>There are also a number of aspects to consider, including picture quality, latency and of course cost. In
+        general we can say that the quality of the analog video standards goes like this: Component and RGB is the best,
+        S-Video is good, Composite is fine on CRTs, but poor on flat screens and RF is the worst with lots of
+        interference in today's electrically crowded world. Regarding latency, cheap Chinese upscalers (found on Amazon
+        and eBay) will add significantly more lag than the more expensive and quality upscalers made with retro gaming
+        in mind. Does that mean that a cheaper solution is necessarily bad and should be avoided? No, just know your
+        needs as you'll get what you pay for.</p>
+
+      <p>The three biggest names in the retro-gaming scene are RetroTINK, OSSC and Framemeister. I'm dismissing the
+        latter here due to it's inavailability, high price and the fact that the OSSC pretty much made it obsolete, and
+        will focus on the first two and some other less known options.</p>
+      <p>The <a href="https://www.retrotink.com/">RetroTINK</a> is made by Mike Chi and it's based on his proprietary
+        design and firmware. There is a Chinese clone on the market called RetroScaler2X, which is a ripoff of the first
+        RetroTINK 2X (not the Pro), before the firmware was encrypted. Even though it's cheaper than the original, I
+        would advice against supporting this way of making business. I'm also excluding the previous official RetroTINK
+        products like the SCART and Mini, which are out of stock due to supply shortage and will probably be
+        discontinued, so you can only buy them on the second hand market.</p>
+
+      <p>The OSSC stands for Open Source Scan Converter, which is an open source design and several companies make
+        assembled end-user products from it, including <a
+          href="https://videogameperfection.com/products/open-source-scan-converter/">VideoGamePerfection</a>, <a
+          href="https://www.amazon.com/dp/B083FG6PXH/ref=cm_sw_r_cp_api_glt_fabc_665ZKD1AHE1WFRZS31CC">Mcbazel</a>, <a
+          href="https://kaicolabs.com/product/kaico-edition-open-source-scan-converter-ossc/">Keico</a> and <a
+          href="https://www.bitfunx.com/product/bitfunx-ossc-open-source-scan-converter-hdmi-adapter-for-retro-game-consoles-ps2-sega-saturn-nintendo-64-pc-engine/">Bitfunx</a>.
+        VideoGamePerfection is the "definitive" one, which uses the latest design and updates, the others being a bit
+        behind (and sometimes being cheaper). Mcbazel (among other manufacturers) also makes an upscaler called <a
+          href="https://www.amazon.se/Mcbazel-ODV-GBS-C-Component-Console-stöd-1080p-utgång/dp/B0B3XPJCDZ">ODV-GBS-C</a>,
+        which is based on the open source project of <a
+          href="the%20https_/github.com/ramapcsx2/gbs-control.html">GBS-Control</a>. It's an updated and enhanced design of
+        the Tvia Trueview5725 based upscalers used in arcade machines, with more connectivity options and a new custom
+        Firmware.</p>
+
+      <h2>Let's see the options</h2>
+
+      <p><b>Note:</b> The indicated price ranges are just approximate and at the time of writing this. VAT, customs and
+        shipping can affect them significantly based on your location.</p>
+
+      <h3>Composite</h3>
+
+      <p><b>A520 TV modulator + AV2HDMI adapter</b><br>
+        The original Commodore TV modulator creates an RF and a Composite output. Most modern TVs still have an
+        RF/antenna input, but it's most probably not even worth to try. The composite signal can be converted to HDMI
+        with a cheap AV2HDMI adaptor from Amazon like <a
+          href="https://www.amazon.co.uk/AV2HDMI-Adapter-Composite-Converter-Support-White/dp/B0791YSS5Q/ref=sr_1_1_sspa?crid=2DXK5ONORFMMR&amp;keywords=av2hdmi&amp;qid=1700040502&amp;s=electronics&amp;sprefix=av2hdm%2Celectronics%2C180&amp;sr=1-1-spons&amp;sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&amp;psc=1">this
+          one</a>.<br>
+        If you already have an A520 TV modulator, this is the cheapest solution. But will result in the worst possible
+        picture quality, where the text is barely readable and as these adaptors were made with VHS/DVD in mind, they
+        also have a pretty significant lag, which can be annoying in games where precision is required.<br>
+        <b>Note:</b> It's possible to modify the A520 modulator to output an S-Video signal, see below.<br>
+        <b>Price range:</b> 10 USD (and an additional 20-30 USD if you need to buy a used A520)</b>
+      </p>
+
+      <p><img src="../images/av2hdmi.jpg"></p>
+
+      <h3>S-Video</h3>
+
+      <p><b>RGB to S-Video adapter + S-Video input on an upscaler (RetroTINK 2x-Pro)</b><br>
+        The <a href="https://www.retrotink.com/product-page/retrotink-2x-pro">RetroTINK 2x-Pro</a> is an upscaler made
+        with retro gaming in mind. It works out of the box and doesn't require configuration. It has Composite,
+        Component and S-Video inputs. With S-Video we can get a decent quality output and there are several ways to get
+        this signal out of the Amiga 500. We can either <a
+          href="https://zenithsal.com/amiga/2018/06/01/amiga-a500-a520-s-video-mod">mod an existing A520 TV
+          modulator</a>, build our own S-Video adapter based on <a
+          href="https://retrohax.net/rgb4all-composite-and-s-video-module/">this</a> or <a
+          href="https://www.everythingamiga.com/2017/02/amiga-rgb-to-s-video-adapter.html">this</a> guide, or buy a
+        ready-made internal module <a
+          href="https://www.retropassion.co.uk/product/amiga-a500-composite-s-video/">here</a> or <a
+          href="https://www.ebay.co.uk/itm/323934490842?_trkparms=amclksrc%3DITM%26aid%3D1110025%26algo%3DHOMESPLICE.COMPOSITELISTINGS%26ao%3D1%26asc%3D256560%26meid%3D80dda1793501492685aa8c93f7656360%26pid%3D101506%26rk%3D9%26rkt%3D25%26sd%3D266124515352%26itm%3D323934490842%26pmt%3D0%26noa%3D1%26pg%3D3458402%26algv%3DAlgoIndex5SimRanker%26brand%3DMarkenlos&amp;_trksid=p3458402.c101506.m1851">here</a>.
+        The solution with the S-Video and Composite output module however, requires some soldering and a hole drilled in
+        the Amiga 500's case.</p>
+
+      <p><img src="../images/retrotink.jpg"></p>
+
+      <p>Another option is a ready-made adapter cable called <b>Amiga Excalibur</b> <a
+          href="https://www.ebay.co.uk/itm/266124515352">here</a> or <a
+          href="https://www.tindie.com/products/axel81l/amiga-svideo-cvbs-video-converter-pal-ntsc-new/">here</a>, which
+        has the adapter built into it's DB23 connector. This cable comes in different variations, there is a 2-in-1
+        version too, that will give you both an S-Video and Composite output. There are different cables for PAL or NTSC
+        TVs, so you need to pick one for your system.<br>
+        <b>Price Range:</b> 180 USD (cable 40, RetroTINK 2x-Pro 140)
+      </p>
+
+      <p><img src="../images/amiga-excalibur-s-video.jpg"></p>
+
+      <h3>RGB-SCART</h3>
+
+      <p><b>RGB-SCART cable + a cheap SCART/RGB to HDMI converter</b><br>
+        A cost effective solution with a decent picture quality as it's using the RGB signal, but expect some added lag
+        by the cheap converter. It's not perfect for gaming where timing is critical, but if you want to connect only
+        your Amiga (or other systems with an RGB output), this is probably the most simple and best value for money
+        solution you can find.<br>
+        You can make your own SCART cable based on <a href="http://www.ianstedman.co.uk/amiga-scart-guide">this
+          guide</a> or buy a <a
+          href="https://www.amiga-shop.net/en/Amiga-Hardware/Amiga-cables-adapters/Amiga-RGB-cable-original-DB23-to-SCART::757.html">ready-made
+          cable</a>.<br>
+        <b>Note 1:</b> Some online stores sell cables with a modified DB25 connector, the one above uses an original
+        DB23 connector.<br>
+        <b>Note 2:</b> A SCART connector can be used to transmit either a Composite or an RGB signal. There are many
+        SCART to HDMI converters out there, but not all of them work with an RGB signal. <a
+          href="https://www.amazon.co.uk/gp/product/B078JJMR5J/ref=as_li_ss_tl?ie=UTF8&amp;psc=1&amp;linkCode=sl1&amp;tag=kdyson-21&amp;linkId=32a0d91326576ec959c6635b82d1a180&amp;language=en_GB">Here
+          is one</a> that should work.<br>
+        <b>Price Range:</b> 55 USD (cable 25, converter 30)
+      </p>
+
+      <p><img src="../images/scart2hdmi.jpg"></p>
+
+      <p><b>RGB-SCART cable + a quality upscaler (OSSC, ODV-GBS-C, RetroTINK 5X-Pro)</b><br>
+        A nicer and better quality solution with no lag, but a higher price tag. The <a
+          href="ttps://videogameperfection.com/products/open-source-scan-converter/?sld=retrorgb">OSSC</a> is a flexible
+        and extendable upscaler with an RGB/SCART and Component input and an upgradable firmware. It's also rather
+        complicated, with a wast amount of settings to play around with. But if you dig into it, you can surely find the
+        best present and options to make it look perfect on practically any screen and there are frequent updates to
+        it's firmware and features. It struggles however when switching resolutions due to it's design (preventing the
+        signal drop would require a frame rate conversion, which needs more buffer memory than the OSSC has). It takes a
+        few seconds to switch, which can be annoying if it happens during gameplay or a demo. Some Amiga games also
+        switch resolutions when displaying high-res title and loading screens, but it's even more annoying if you have
+        other retro systems too like the PS2, where it was common for developers to use 240p for the game and 480i for
+        the in-game menus.</p>
+
+      <p><img src="../images/ossc.jpg"></p>
+
+      <p>The <a href="https://www.odv-gbsc.com/products/odv-gbs-c-converter-for-retro-gaming-console">ODV-GBS-C</a> is
+        an upscaler specially designed for classic retro game consoles. It's based on a generic upscaler for arcade
+        machines, with many improvements. It converts YPbPr component and RGB signals to HDMI and VGA. It's also lag
+        free and supports dynamic de-interlacing, scanline effect and no delay for 240p/480i switching (unlike the
+        OSSC). It can even downscale higher resolution inputs to 240p, for displaying them on a CRT. Mcbazel's model can
+        be found on <a
+          href="https://www.amazon.com/Mcbazel-ODV-GBS-C-Component-Converter-Console/dp/B0B4B2CM9F/ref=sr_1_1_sspa?crid=2AVUH822VIN7F&amp;keywords=Mcbazel+ODV-GBS-C&amp;qid=1700662045&amp;sprefix=mcbazel+odv-gbs-c%2Caps%2C321&amp;sr=8-1-spons&amp;sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&amp;psc=1">Amazon</a>.
+        If quick resolution switching and dynamic de-interlacing is an important factor for you, I recommend looking at
+        this option, it's also significantly cheaper than OSSC.</br>
+        <b>Note:</b> As GBS-Control is an open-source project, you can also build a scaler on your own. There are even
+        <a href="https://www.retroupgrades.co.uk/product/gbs-c-aio/">All-In-One kits</a> available, which make this the
+        cheapest quality solution for people who like soldering.
+      </p>
+
+      <p><img src="../images/gbsc.jpg"></p>
+
+      <p>The <a href="https://www.retrotink.com/product-page/5x-pro">RetroTINK 5x-Pro</a> is considered to be the top of
+        the class by many in the retro gaming scene, and it's price is reflecting that. Currently sold at 325 USD makes
+        it the most expensive option. If you're in Europe, with the tax and shipping it will be closer to 400. For this
+        price however you get an FPGA based upscaler, a hassle-free plug and play solution that works with virtually
+        every possible analog input and can upscale to 1080p (as opposed the RetroTINK 2X models that can only double to
+        480p).<br>
+        <b>Price Range:</b> 115-350 USD (cable 25, OSSC 150, ODV-GBS-C 90, RetroTINK 5X-Pro 325)
+      </p>
+
+      <p><img src="../images/retrotink5xpro.jpg"></p>
+
+      <h3>Component</h3>
+
+      <p><b>RGB to Component adapter + Component input on an upscaler (OSSC, ODV-CBS-C, RetroTINK 2X-Pro,
+          5X-Pro)</b><br>
+        You can convert the Amiga's RGB output to Component with an external adapter, and use practially any quality
+        upscaler with it.<br>
+        The signal on the Mono output it basically the Luma of the Component video, with CSYNC. It's possible to use the
+        Luma signal from the Mono jack and combine it with Pb and Pr signals we can get from the RGB port. There is no
+        ready made solution for this, but you can make your own adapter based on <a
+          href="https://github.com/c0pperdragon/AmigaYPbPrAdapter">this guide</a>.</p>
+      <p>Another way is to use only the RGB port to generate a Component output, you can build your own adapter based on
+        <a href="https://gglabs.us/node/983">this project</a>, or you can buy this nice and reasonably priced pre-built
+        adapter from a RetronicDesign, a Canadian manufacturer: <a
+          href="https://www.tindie.com/products/retronicdesign/commodore-amiga-video-to-components-adapter">here</a> or
+        <a
+          href="https://www.ebay.com/itm/185866422419?hash=item2b46808893:g:hPcAAOSwl8xkRGF3&amp;amdata=enc%3AAQAIAAAA4OaBBL7RlZW304xTVvGIGZqu10%2B5ABUAo4ueg1mBGDo4TAj21%2BLGulxIk%2BwmR0cJ5%2BXxZ06kn2UGJmFy6xVlglKENiTD2jxfKu7hsoiHHkiNTU%2BPZTsNTfIgI%2BnJJw62XoU1bDE3G6Ho5Gqu2JJrY9cqm5h%2BbvrqdxTb5rYAdadQFwX1Jc1n1M1B9XjC%2Bg1yEOqqeGBFge3fWguffRW4OfPBA8UcT840emgBFCbAoWNWUObbqP1yeXPL4aC5qferi9jNrpebldo6OXPw0QWnm3kn%2FtSphDndWfGL8dxJpPgu%7Ctkp%3ABk9SR_jZwbf6Yg">here</a>.<br>
+        <b>Price Range:</b> 180-400 USD (component adapter 40-50, RetroTINK/OSSC 140-150, ODV-GBS-C 90, RetroTINK 5X-Pro
+        325)
+      </p>
+
+      <p><img src="../images/amiga-to-component.jpg"></p>
+
+      <h3>Direct HDMI output</h3>
+
+      <p><b>HDMI output with an internal Pi Zero adapter</b><br>
+        This is an internal mod, adding an adapter to the Denise chip to hijack the video signal and convert it to HDMI
+        with a Pi Zero. Buy the adapter <a
+          href="https://www.retroguru.eu/product/amiga-rgbtohdmi-adapter-rgb-to-hdmi-raspberry-pi-zero/">here</a> or
+        another version <a href="https://www.retropassion.co.uk/product/rgb2hdmi_amiga_500/">here</a>.<br>
+        <b>Note:</b> You'll need to add a Pi Zero and an SD card with the appropriate software. Also, you have to ditch
+        the internal shielding for it to fit, and find a way to lead the cable out of the case, maybe through the side
+        expansion port (if you don't use it for something else). There is even an <a
+          href="https://www.retro32.com/product/amiga-500-expansion-port-cover-for-rgb-to-hdmi-equipped-amiga-cable-access-hole">expansion
+          port cover</a> with a cable access hole.<br>
+        <b>Price Range:</b> 85 USD (adapter 40-50, Pi Zero 30, cover 10)
+      </p>
+
+      <p><img src="../images/rgb2hdmi-pi.jpg"></p>
+
+      <p align="center"><a href="#top">Back to Top</a></p>
+    </div>
+  </div>
+  <script src="../fontswitcher.js"></script>
+</body>
+
+
+<!-- Mirrored from neongod.neocities.org/articles/a500-hdmi-video by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 30 May 2025 14:34:09 GMT -->
+</html>

@@ -1,0 +1,107 @@
+<html lang="en" id="top">
+
+<!-- Mirrored from neongod.neocities.org/articles/mac-classic-ii-roms by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 30 May 2025 14:33:20 GMT -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landed: The Solana Vanishing Act</title>
+  <meta name="robots" content="noai, noimageai">
+  <meta name="description" content="Personal website about retro computers, restoration and preservation of old tech.">
+  <meta name="keywords" content="Commodore Amiga, Amiga 500, Tracker music, Links">
+   <script src="../applySavedFont.js"></script>
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body background="../images/stars.gif" text=#ffff99 link=#e6e600 vlink=#b37700>
+
+  <div class="logo">
+    <img src="../images/The Solgone World.png" alt="planet neon title">
+    <img src='../images/orb_lavender.gif' alt="Orb divider">
+  </div>
+
+  <div class="center-container">
+    <div class="titlebox">
+      <img src="../images/fire.gif">
+      <span>The Solana Vanishing Act</span>
+      <img src="../images/fire.gif">
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="left-column column">
+      <p><a href="../retroshrine.html"><b>Back to Base</b></a></p>
+      <p><a href="../index.html"><b>Back to Orbit</b></a></p>
+      <img src="../images/star.gif">
+      <div id="font-selector">
+        <p><label for="fonts">Select Font:</label></p>
+        <select id="fonts">
+          <option value="amiga">Amiga</option>
+          <option value="macintosh">Macintosh</option>
+        </select>
+      </div>
+      <div class="image-container">
+        <p>Building complex:</p>
+        <img src="../images/base-amiga.gif"><br>
+        <p>Base location on planet:</p>
+        <img src="../images/base-location-amiga.gif">
+      </div>
+    </div>
+
+    <div class="right-column column">
+      <h1>Macintosh Classic II - Making new system ROMs</h1>
+
+        <p>During the <a href="mac-classic-II-restoration-2.html">restoration of my Performa 200</a>, I ended up getting another Classic II for parts, to be able to isolate the issue I was having. It turned out that the system ROMs were dead in my machine. I could replace the ROMs from the machine I got for parts, but then I started feeling bad about leaving that poor Classic II by itself and wanted to repair it too. I had to find a way to get new system ROMs. Unfortunately it's almost impossible to find vintage Macintosh ROMs for sale, so the only option was to make my own ROMs by programming EPROMs.</p>
+
+        <h2>Classic II ROM</h2>
+
+        <p>The system ROM in the Macintosh Classic II is 512Kb and it's in two 256Kb ICs. A compatible EPROM is the 512Kb AMD 27C400 DIP-40 and we need two of them. I bought mine from this <a href="https://www.ebay.com/itm/284526280037?var=586103610524" target="_blank">eBay seller</a> and I can verify that for me these worked.</p>
+
+        <p>The Vintage Macintosh ROMs can be found on the internet at several places, but the <a href="https://www.jottacloud.com/s/03020ef057cfc30479e8e2d28ecfd2f41cc" target="_blank">Classic II ROM file</a> is 512Kb, so we need to split that into 2x256Kb before burning it. <a href="http://www.synack.net/~bbraun/classic2.html" target="_blank">This website</a> contains some useful information on the Classic II ROMs and it has a small command line program written in C called <a href="http://www.synack.net/~bbraun/macsrc/c2split.c" target="_blank">c2split.c</a>, that can be used to split the ROM file into two. You can easily compile the program and use it from terminal on MacOS or Linux. But if you don't want to, here are the ROM files I splitted:<br>
+          <a href="https://www.jottacloud.com/s/0308399192b169645fe87f76f250c1b2688" target="_blank">341-0257-mod.bin</a><br>
+          <a href="https://www.jottacloud.com/s/030120e31d3b88b4bc1b53914729ef90ecf" target="_blank">341-0261-mod.bin</a></p>
+
+        <h2>EPROM Programmer</h2>
+
+        <p>Now that we have the ROM files and the EPROM chips, we need a programmer to burn them. There are two EPROM programmers on the market I found people recommending, one is the <a href="https://www.mcumall.com/store/" target="_blank">GQ-4X4</a>, the other is the TL866-II. Unfortunately the TL866-II (white unit) has been discontinued and replaced with the <a href="http://www.xgecu.com/en/" target="_blank">XGecu T48</a> (also called TL866-III). Even if most sellers or auctions claim to sell a TL866-II (or compatible), you'll most likely get a T48 (black unit), which is in many ways better, but in some ways worse, as it's incompatible with the old adapters. All of these EPROM programmers (even the GQ4x4) need an adapter to be able to burn 16-bit 27C400/800/160 EPROMs. The issue with this is that the socket on the T48 is wired slightly differently and it was rotated so it sits the other way around, which makes fitting the adapters made for the TL866-II impossible (you can't close the lever). Most adapters on auction sites were still made for the TL866-II and won't work with the T48.</p>
+
+        <p>Luckily there is now a <a href="https://www.gotek-retro.eu/t48-eprom-adapter/" target="_blank">27C400/C800/C160 adapter for the T48</a> also, made by Gotek-retro. I decided to go with this solution as I'm in the EU and importing the GQ4x4 (and an adapter for it) from Canada seemed significantly more expensive. So I got an XGecu T48 from Amazon and the 27C400 adapter from Gotek-retro.</p>
+
+        <h2>Programming the ROMs</h2>
+
+        <p>Burning the ROMs with the XGecu Pro software is not straight-forward, but not a rocket science either. I never did this before, but after some trial and error, I managed to figure it out. I was using my MacBook, running MacOS Ventura and Windows 10 in Parallels. If you're going to do the same, pay attention to when you connect the adapter to the USB port, Parallels will ask if you want to connect it to MacOS or Windows, choose Windows. You can get the XGecu Pro application from the <a href="http://www.xgecu.com/en/download.html" target="_blank">official site</a>.</p>
+
+        <p>Here is how I did it:</p>
+
+        <p>Insert the adapter into the T48 unit and the 27C400 EPROM into the socket according to the instructions on the board (align the EPROM towards the lever of the T48, with the notch facing the other way, towards the empty pins). Set the EPROM type switch to 27C400/800/160 and the bank switch to 0.</p>
+
+        <p><img src="../images/mac_classic2-rom_2.jpg"></p>
+
+        <p>In the XGecu Pro software select the IC type and set it to <b>AM27C4096 @ DIP40</b>. This is very important. If you set it to 27C400, it won't work.</p>
+
+        <p>Click load in the toolbar and select the ROM file you want to burn. Leave every setting in loading window on default.</p>
+
+        <p>In the Options section of the main window, turn off every option except Verify After (so it will verify the result after the programming is complete). Set the VPP and VDD voltage value according to the specifications of the EPROM you bought (can be found on the manufacturer's website). It will likely be a value between 12.50V and 13.00V for VPP, 6.50V for VDD write and 5.00V for VCC verify. Puls Delay I left on the default 100us.</p>
+
+        <p>Now click on the PROG icon in the toolbar and start the programming. It will take a few minutes, but should result in a "Programming ...Succeeded" message. Replace the EPROM and do the same for the other file. Don't forget to label the EPROMs in a way that covers the UV sensitive opening on them and mark the notch on the label (if it covers it).</p>
+
+        <p><img src="../images/mac_classic2-rom_1.jpg"></p>
+
+        <p>Pay attention to the orientation when inserting the ROMs into the logic board. The socket pin towards the ROM size selector jumper switch should be left empty and the notch on the ROMs should face in that direction too. The ROMs go into the follwing sockets:<br>
+          341-0261 -> Socket U23<br>
+          341-0257 -> Socket U22</p>
+
+        <p><img src="../images/mac_classic2-rom_3.jpg"></p>
+
+        <p>It was a success, another Classic II saved:</p>
+
+        <p><img src="../images/mac_classic2-rom_4.jpg"></p>
+
+      <p align="center"><a href="#top">Back to Top</a></p>
+    </div>
+  </div>
+  <script src="../fontswitcher.js"></script>
+</body>
+
+
+<!-- Mirrored from neongod.neocities.org/articles/mac-classic-ii-roms by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 30 May 2025 14:33:23 GMT -->
+</html>

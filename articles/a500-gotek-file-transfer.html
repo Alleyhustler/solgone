@@ -1,0 +1,128 @@
+<html lang="en" id="top">
+
+<!-- Mirrored from neongod.neocities.org/articles/a500-gotek-file-transfer by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 30 May 2025 14:34:09 GMT -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landed: The Solana Vanishing Act</title>
+  <meta name="robots" content="noai, noimageai">
+  <meta name="description" content="Personal website about retro computers, restoration and preservation of old tech.">
+  <meta name="keywords" content="Commodore Amiga, Amiga 500, GOTEK, File Transfer, PC-Amiga file transfer">
+   <script src="../applySavedFont.js"></script>
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body background="../images/stars.gif" text=#ffff99 link=#e6e600 vlink=#b37700>
+
+  <div class="logo">
+    <img src="../images/The Solgone World.png" alt="planet neon title">
+    <img src='../images/orb_lavender.gif' alt="Orb divider">
+  </div>
+
+  <div class="center-container">
+    <div class="titlebox">
+      <img src="../images/fire.gif">
+      <span>The Solana Vanishing Act</span>
+      <img src="../images/fire.gif">
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="left-column column">
+      <p><a href="../retroshrine.html"><b>Back to Base</b></a></p>
+      <p><a href="../index.html"><b>Back to Orbit</b></a></p>
+      <img src="../images/star.gif">
+      <div id="font-selector">
+        <p><label for="fonts">Select Font:</label></p>
+        <select id="fonts">
+          <option value="amiga">Amiga</option>
+          <option value="macintosh">Macintosh</option>
+        </select>
+      </div>
+      <div class="image-container">
+        <p>Building complex:</p>
+        <img src="../images/base-amiga.gif"><br>
+        <p>Base location on planet:</p>
+        <img src="../images/base-location-amiga.gif">
+      </div>
+    </div>
+
+    <div class="right-column column">
+    <h1>Transfer files between PC/Mac and Amiga with a GOTEK drive</h1>
+    <p>There are plenty of ways to transfer files between a modern computer and your Amiga 500. Some are very slow (serial cable), others are expensive (modern expansions on the CPU slot). There is an SDbox hardware that connects to the parallel port, which might be a good solution, but I haven't tested it yet and I heard about issues (especially with Kickstart 1.3). What most people have nowadays however is a GOTEK floppy emulator. Either replacing the internal floppy drive or connected externally as a secondary floppy drive. Transferring ADF files are a breeze, you just copy them to your USB stick and that's it. But what if you'd want to try stuff that's on Aminet, the Fred Fish disks or somewhere else? They usually come lha compressed or in executables. How do you transfer those?</p>
+    <h2>Prepare an emulator</h2>
+    <p>I'm using <a href="https://fs-uae.net/" target="_blank">FS-UAE</a> under MacOS, but the principle is the same with WinUAE under Windows too.</p>
+    <p>Open your emulator (FS-UAE Launcher) and have a Workbench floppy image at hand.</p>
+    <p>Click the menu icon in the top left corner and open the ADF creator. Create two new standard ADF images. I named them filetransfer1.adf and filetransfer2.adf. Save them to a location that's easily accessible like that Desktop or find them in /Users/your-user/Documents/FS-UAE/Floppies</p>
+    <p><img src="../images/fsuae1.gif"></p>
+    <p><img src="../images/fsuae2.gif"></p>
+    <p>Configure your emulator to emulate your Amiga 500. Amiga Model: A500, 1.3 ROM.</p> 
+    <p>Floppy Drive: Insert the Workbench 1.3 disk to drive 0 (first drive) and the empty ADFs you created to drive 1 and 2 (second and third drive).</p>
+   <p><img src="../images/fsuae3-0.gif"></p>
+    <p>On the Hard Drives tab browse for a folder that will contain the stuff you downloaded and want to put on the new ADF. Can be your Downloads folder or create a separate Amiga folder for this.</p>
+    <p><img src="../images/fsuae3-2.gif"></p>
+
+    <p>On the ROM tab select your Kickstart 1.3 ROM file. Configure the RAM settings to match your machine (or more if you want).</p>
+    <p><img src="../images/fsuae3-1.gif"></p>
+    <p>Click on the menu icon in the top left corner again, then select the Settings option.</p>
+    <p><img src="../images/fsuae4.gif"></p>
+    <p>In the new window, click on Advanced and type in the following configuration lines:</p>
+    <pre># Set the floppy drive speed to 8x
+floppy_drive_speed = 800
+
+# To allow changes to be written to ADF files
+# Without this FS-UAE never saves to ADF files directly, it creates an overlay diff file instead 
+writable_floppy_images = 1
+</pre>
+    <p><img src="../images/fsuae5.gif"></p>
+    <p>Without the writeable_floppy_images=1 option FS-UAE will protect your ADFs and won't save your changes to the original file. It creates a Floppy overlay file in Documents/FS-UAE/Floppy Overlays for every disk instead. After adding this option it should work as you'd expect it to, and save your stuff properly.</p>
+    <p>Close the advanced settings, give a name to your configuration instead of "Unnamed Configuration" and click the save config button next to it.</p>
+    <p>Download the following stuff and place it in your shared folder (the one you configured in FS-UAE as an Amiga drive):</p>
+    <ul>
+        <li><a href="https://www.jottacloud.com/s/03037894ee19c1b4236aa7ce067df36c106" target="_blank">Lha v1.38 extractor</a> (This is a Kickstart 1.3 compatible version. The newer version on Aminet unfortunately doesn't work under Kickstart 1.3)</li>
+        <li><a href="http://aminet.net/package/util/cli/splitter304a">Splitter304a</a> by Martin Schlodder (to split and join larger files to multiple floppies)</li>
+    </ul>
+    <p>Optional (but will make life much easier):</p>
+    <ul>
+        <li><a href="https://www.jottacloud.com/s/030450d588b95244b0fad9c4260748e9039" target="_blank">Disk Master 2.1</a> (the last version that works on older systems)</li>
+    </ul>
+
+    <p>You can add the Disk Master 2.1 ADF to the 4th floppy drive of the emulator.</p>
+    <h2>Copy the files using the emulator</h2>
+    <p>Start the emulator. After it booted, open the Workbench 1.3 disk and a new Shell. In the shell, type the following commands:</p>
+    <pre>cd amiga:          // use your shared folder name
+dir
+lha                 // check that lha works
+copy lha df1:       // copy the lha executable to your empty ADF</pre>
+    <p><img src="../images/lha.gif"></p>
+
+    <p>If you want, you can also drag the DM2 icon in Workbench from the Disk Master floppy to both your shared folder and the empty disk, so you'll always have a tool for copying and browsing files at hand.</p>
+    <h2>Splitting bigger files</h2>
+    <p>If you want to transfer bigger files that won't fit on a single floppy disk, you can use the Splitter tool. It can be used to split larger files into floppy disk sizes, then join them together on the Amiga side. This is only useful if you either have an extra memory expansion in your Amiga 500 (so you can extract and join files in RAM) or if you have a hard drive.</p>
+    <p>Here is how to do it:</p>
+    <pre>
+lha x splitter304a.lha              // extract the splitter
+rename splitter splitter304a        // rename the splitter folder to avoid conflict
+copy splitter304/splitter amiga:    // copy the tool from it's folder to the shared volume 
+copy splitter df1:                  // copy it to the filetransfer1.adf</pre>
+    <p>Now let's try it on some larger file. I'm using the mui38usr.lha here as an example, which is a 1MB file:</p>
+    <pre>
+splitter -h                          // gives you detailed help
+splitter mui38usr.lha                // will split the file to two 720kbyte chunks
+splitter -s amiofsdc-dd muiusr38.lha // will split the file into two 840kbyte 
+                                     // chunks (Amiga OFS Dir-Cache Double Density)</pre>
+    <p><img src="../images/splitter1.gif"></p>
+    <p>Joining the files is similarly easy. You just specify -j as join, then list the source files and in the end the destination file:</p>
+    <pre>splitter -j muiusr38.lha.001 muiusr38.lha.002 muiusr38-joined.lha</pre>
+    <p><img src="../images/splitter2.gif"></p>
+
+    <p>After you copied the files to the filetransfer1 and filetransfer2 ADFs, you can quit the emulator, copy the ADFs to your GOTEK's USB stick and use them on your Amiga.</p>
+      <p align="center"><a href="#top">Back to Top</a></p>
+    </div>
+  </div>
+  <script src="../fontswitcher.js"></script>
+</body>
+
+
+<!-- Mirrored from neongod.neocities.org/articles/a500-gotek-file-transfer by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 30 May 2025 14:34:13 GMT -->
+</html>

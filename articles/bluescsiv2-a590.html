@@ -1,0 +1,88 @@
+<html lang="en" id="top">
+
+<!-- Mirrored from neongod.neocities.org/articles/bluescsiv2-a590 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 30 May 2025 14:33:30 GMT -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landed: The Solana Vanishing Act</title>
+  <meta name="robots" content="noai, noimageai">
+  <meta name="description" content="Personal website about retro computers, restoration and preservation of old tech.">
+  <meta name="keywords" content="Commodore Amiga, Amiga 500, Tracker music, Links">
+  <script src="../applySavedFont.js"></script>
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body background="../images/stars.gif" text=#ffff99 link=#e6e600 vlink=#b37700>
+
+  <div class="logo">
+    <img src="../images/The Solgone World.png" alt="planet neon title">
+    <img src='../images/orb_lavender.gif' alt="Orb divider">
+  </div>
+
+  <div class="center-container">
+    <div class="titlebox">
+      <img src="../images/fire.gif">
+      <span>The Solana Vanishing Act</span>
+      <img src="../images/fire.gif">
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="left-column column">
+      <p><a href="../retroshrine.html"><b>Back to Base</b></a></p>
+      <p><a href="../index.html"><b>Back to Orbit</b></a></p>
+      <img src="../images/star.gif">
+      <div id="font-selector">
+        <p><label for="fonts">Select Font:</label></p>
+        <select id="fonts">
+          <option value="amiga">Amiga</option>
+          <option value="macintosh">Macintosh</option>
+        </select>
+      </div>
+      <div class="image-container">
+        <p>Building complex:</p>
+        <img src="../images/base-amiga.gif"><br>
+        <p>Base location on planet:</p>
+        <img src="../images/base-location-amiga.gif">
+      </div>
+    </div>
+
+    <div class="right-column column">
+      <h1>BlueSCSI v2 with an A590's external SCSI port</h1>
+
+        <p>I have a BlueSCSI v2 external DB25 version and as the Commodore A590 sidecar hard drive for my Amiga 500 also has a DB25 port on it's back, 
+		I thought it would be good to use it as a backup of the internal SCSI drive and maybe as a means of file transfer too. It turned out to be very 
+		easy, even though not without some inconveniences.</p>
+		<p>The first thing is that the 3D printed case has to be removed from the BlueSCSI v2, as with the case on it won't fit on the DB25 port due to the power plug being too close. With the case removed, it fits nicely. Another issue is that the SD card slot is facing the power plug, so you can't swap the SD card without either unplugging the BlueSCSI or the power plug first. Besides these two issues however, I couldn't find anything else really. It just works great!</p>
+		<p><img src="../images/bluescsi_a590_1.png"></p>
+		<p>The steps I did:</p>
+		<p>First I created a bluescsi.ini based on the <a href="https://bluescsi.com/docs/Compatibility">documentation</a> with these contents:</p>
+		<pre>[SCSI]
+System="Generic"
+EnableSCSI2=0 ; Off
+PrefetchBytes=0
+[SCSI0]
+Vendor=Blue
+Product=Bluedrive
+Version=1.0
+SectorsPerTrack=32
+HeadsPerCylinder=1</pre>
+		<p>Then I used FS-UAE to create an empty 250MB hard file, which I copied to the SD card with the following file name:</p>
+		<pre>HD2 - AmigaWB13.hda</pre>
+		<p>Plugged the SD card in the BlueSCSI and plugged the BlueSCSI into the DB25 port of the A590 and fired it up. Using the HDToolBox from the A590 installation floppy disk
+		it could find the BlueSCSI drive right away and I could partition it. I created two partitions to back up my WB and Work partitions on my internal SCSI drive, then I formatted them
+		using FastFileSystem. I made the backup WB partition bootable with a reduced boot priority so I can start the system from the BlueSCSI also if anything would go wrong 
+		with the internal drive and so I can boot it with an emulator.</p>
+		<p><img src="../images/bluescsi_a590_2.png"></p>
+		<p>What was left to do was to copy the files over with a file manager. I tried loading the disk image with FS-UAE and it works nicely, so I can actually copy new stuff to it and use
+		the SD card as a means of file transfer.</p>
+
+        <p align="center"><a href="#top">Back to Top</a></p>
+    </div>
+  </div>
+  <script src="../fontswitcher.js"></script>
+</body>
+
+
+<!-- Mirrored from neongod.neocities.org/articles/bluescsiv2-a590 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 30 May 2025 14:33:32 GMT -->
+</html>

@@ -1,0 +1,173 @@
+<html lang="en" id="top">
+
+<!-- Mirrored from neongod.neocities.org/articles/bluescsiv2-dayna by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 30 May 2025 14:33:32 GMT -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landed: The Solana Vanishing Act</title>
+  <meta name="robots" content="noai, noimageai">
+  <meta name="description" content="Personal website about retro computers, restoration and preservation of old tech.">
+  <meta name="keywords" content="Macintosh, BlueSCSI, DaynaPort, Macintosh Classic Internet, Macintosh Classic II online, BlueSCSI WIFI">
+  <script src="../applySavedFont.js"></script>
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body background="../images/stars.gif" text=#ffff99 link=#e6e600 vlink=#b37700>
+
+  <div class="logo">
+    <img src="../images/The Solgone World.png" alt="planet neon title">
+    <img src='../images/orb_lavender.gif' alt="Orb divider">
+  </div>
+
+  <div class="center-container">
+    <div class="titlebox">
+      <img src="../images/fire.gif">
+      <span>The Solana Vanishing Act</span>
+      <img src="../images/fire.gif">
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="left-column column">
+      <p><a href="../retroshrine.html"><b>Back to Base</b></a></p>
+      <p><a href="../index.html"><b>Back to Orbit</b></a></p>
+      <img src="../images/star.gif">
+      <div id="font-selector">
+        <p><label for="fonts">Select Font:</label></p>
+        <select id="fonts">
+          <option value="amiga">Amiga</option>
+          <option value="macintosh">Macintosh</option>
+        </select>
+      </div>
+      <div class="image-container">
+        <p>Building complex:</p>
+        <img src="../images/base-amiga.gif"><br>
+        <p>Base location on planet:</p>
+        <img src="../images/base-location-amiga.gif">
+      </div>
+    </div>
+
+    <div class="right-column column">
+      <h1>BlueSCSI v2 and Internet on a Mac Classic II</h1>
+
+        <p>Now that I've renovated my Macintosh Performa 200 (Classic II), I wanted to put some software on it. Apple used a 1.44MB PC compatible floppy drive (SuperDrive) in the Classic II, so one way is to buy a USB floppy drive and some floppy disks and it's possible to transfer files that way, but I wanted a faster and more flexible solution and that's where the BlueSCSI comes into the picture.</p>
+
+        <p>BlueSCSI is a project that aims to create an open source SCSI solution for vintage computers. It's mainly driven by Apple enthusiasts, so it has vintage Macs in mind as default, but of course it works with many other systems too. BlueSCSI v2 is a completely redesigned board that's based around the Raspberry Pi Pico microcontroller. It also shares some code with ZuluSCSI's SCSI2SD implementation.<p/>
+
+        <p>The reason I chose BlueSCSI instead of ZuluSCSI or the Pi/RASCSI project is that I was mainly aiming to use it on Mac and the possibility of accessing the Internet with it was also appealing. Not to mention the cost, which is very reasonable, from 34 EUR for a build it yourself kit.</p>
+
+        <p><img src="../images/BlueSCSI-kit-1.jpg"></p>
+
+        <p>BlueSCSI comes in different form factors, for both internal or external use. I decided to pick up the DB25 connector version (external unit), as I didn't want to replace my internal hard drive (yet), and I was afraid that the wireless capabilities would be impacted if I would install it inside the Mac's housing. The DB25 unit comes with a 3D printed case, it has SCSI termination installed and enabled by default and it connects to the SCSI port on the back of your Mac. I got the kit, which had to be assembled, which was pretty easy. The SMD components are already soldered on, so what's left is to solder on the DB25 connector and the connector for the Raspberry Pi Pico W (which comes included with the kit).</p>
+        <div class="image-row">
+        <img src="../images/BlueSCSI-kit-2.jpg"><img src="../images/BlueSCSI-kit-3.jpg">
+        </div>
+
+        <p>After assembly, you can prepare a micro SD card. There are <a href="https://bluescsi.com/docs/BlueSCSI-Images">blank or pre-installed images</a> you can download, but you can also make your own hard drive image with Basilisk II. I downloaded a 1GB blank image, booted up Basilisk II with System 7.5, with the blank image being the second drive, and copied over the software I wanted to try on my vintage Mac. You need to rename the images to be able to do this, as Basilisk II looks for the .dsk extension for images, while BlueSCSI expects the images to be .hda.</p>
+
+        <p>Setting up the BlueSCSI is very easy. Just format a micro SD card to FAT or exFAT. I recommend using the <a href="https://www.sdcard.org/downloads/formatter/">SD Card Formatter tool</a>. Then copy your images to the SD card. The SCSI bus in the Macintosh Classic II supports 7 SCSI devices, with device 7 being the CPU. You need to pick a unique ID for your images. BlueSCSI mounts the drives using a fixed naming convention:</p>
+        <p>[Image Type][SCSI ID] Name.hda<br><br>
+
+          Image Type (required):<br>
+          HD - Hard Disk<br>
+          CD - Optical<br>
+          FD - Floppy<br>
+          MO - Magneto Optical<br>
+          RE - Removable<br>
+          TP - Sequential Tape<br>
+          NE - Network (DaynaPort)</p>
+
+        <p>So if you want to make a hard disk and assign it to SCSI ID 2, you can name your file like this:<br>
+        HD1 - My BlueSCSI drive.hda</p>
+        <p>Emulate a SCSI CD-ROM drive with an ISO file:<br>
+        CD2 - Myst.iso</p>
+
+       <h2>DaynaPort SCSI/Link Internet connection</h2>
+
+        <p>The Raspberry Pi Pico W has wireless capabilities and BlueSCSI can now use that and emulate a DaynaPort SCSI/Link Network card. With this you can access the Internet on your Mac Classic II!</p>
+
+        <p>Here is how to set it up. First, create an empty text file in the root of your SD card and name it:<br> 
+        NE4.hda</p>
+
+        <p>Next create a text file in the root of your SD card and name it:<br>
+        bluescsi.ini</p>
+
+        <p>Add the following configuration to the bluescsi.ini:</p>
+        <pre>[SCSI]
+WiFiSSID=YourWIFINetworkSSID
+WiFiPassword=YourWIFIpassword</pre>
+
+        <p>The WIFI network you're connecting to should support 2.4GHz and WPA+WPA2 authentication.</p>
+
+        <p>By placing these two files on your SD card you esentially told BlueSCSI to create a DaynaPort SCSI/Link netowork card with SCSI ID 4 and to connect the Raspberry Pi Pico W to your WIFI network and to create a bridge between the two.</p>
+
+        <p>Now what's left is to set things up on the MacOS side. BlueSCSI provides a setup image you can download called <a href="https://mega.nz/file/4kpDkQAb#-EEw3HZRrHOgDmK9qKRrM-zrh9OIg55gXgQn6T_JCXM">"HD1 - BlueSCSI v2 PicoW Setup.hda"</a>. Download and place on your SD card.</p>
+
+        <p>Your MacOS needs to have either MacTCP or OpenTransport installed. If you're on System 7.0, go with MacTCP. From System 7.1 and up, you can go with OpenTransport. The BlueSCSI v2 PicoW Setup image contains installers for both. You'll also need to install the DaynaPort SCSI/Link drivers, then some Internet applications to use. If you install MacTCP, you can also install MacTCP Ping, to test your connection.</p>
+
+        <p><img src="../images/BlueSCSI-Dayna-setup-1.jpg"></p>
+
+        <p>After installing the TCP/IP stack, the DaynaPort drivers and rebooting your system you're ready to configure your TCP/IP network.</p> 
+
+        <p><img src="../images/BlueSCSI-Dayna-setup-2.jpg"></p>
+
+        <p>My Macintosh Classic II is running System 7.0 with MacTCP, and setting it up was very easy. Depending on your MacTCP version, the control panel can look differently, but esentially the settings and the process are the same.</p> 
+
+        <p>Open the MacTCP control panel and click More. Select the Obtain Address Manually option and click OK (you can't enter an IP address manually in the main windows before this). Now in the previous (main) window enter an IP address. For example 192.168.10.15 (which should match your WIFI network's range and be unique). Press Enter. Then click More again. Either enter a subnet mask: 255.255.255.0 or Select IP address Class C. Enter a gateway/router address (your WIFI router's IP address). In my example it's 192.168.10.1. In the domain name server information enter local into the domain and make it point to your router's address: 192.168.10.1. Select the Default button next to it. Click OK.</p>
+
+        <p><img src="../images/BlueSCSI-MacTCP-setup-1.jpg"></p>
+
+        <p>You're done. Now your Mac should be online. You can try pinging your router's IP address from MacTCP Ping or open a webpage in a web browser like Netscape 2.0.2.</p>
+
+        <p><img src="../images/BlueSCSI-DaynaLink-online.jpg"></p>
+
+        <p>Don't forget that most websites today require HTTPS, which won't work on such an old system, without a proxy. But here are some HTTP sites you can try:</p>
+
+        <p><a href="http://wwww.frogfind.com/">FrogFind</a> - Search engine for vintage computers. It also strips down the results and serves them on HTTP, so you can view other pages with it.</p>
+
+        <p><a href="http://oldavista.com/">Old'aVista</a> - Search engine for personal websites and web archives</p>
+
+        <p><a href="http://wiby.me/">Wiby</a> - Search engine for personal sites. Optionally filters out HTTPS (click Settings)</p>
+
+        <p><a href="http://68k.news/">68k.news</a> - Google News in a simple text format</p>
+
+        <p><a href="http://info.cern.ch/hypertext/WWW/TheProject.html">Info.cern.ch</a> - the very first website</p>
+
+        <p><a href="http://www.mcom.com/">Mosaic Communication</a> - The original Mosaic website from 1994</a></p>
+
+        <p><a href="http://www.rinkworks.com/">Rink Works</a> - Collection of entertainment-related content</a></p>
+
+        <p><a href="http://obsolete.macfixer.com/vintage-software/">MacFixer</a> - Vintage Mac Software Library</a></p>
+
+        <p><a href="http://machut.net/">MacHut</a> - Vintage Apple Mac archives</p>
+
+        <p>To access the broader web you'll need a proxy server. If you don't want to install your own proxy server, you can also try out the <a href="https://protoweb.org/">ProtoWeb service</a>, which provides free and public proxy servers for vintage machines. But if you want your own with more control, give WebOne a try.</a> 
+
+        <h2 id="webone">WebOne Proxy for vintage computers</h2>
+
+        <p><a href="https://github.com/danmons/retronas/wiki/WebOne">WebOne</a> is a proxy server designed to make the web usable again with vintage computers. The biggest pain is SSL, which old computers can hardly handle and now the whole world started moving towards forcing HTTPS connections, technically making accessing the web from old machines impossible. This is where a proxy like WebOne becomes handy.</p>
+        <p>Running on any PC (Windows or Linux) in your local network it can strip the requests of the secure layer and serve a plain old HTTP website to your old machines. It can also do a lot of other fancy stuff if you want it to, like converting images, processing videos, etc.</p>
+        <p>It works well on newer RaspberryPis like the RPi3 or RPi4 and I've installed it on mine. The installation is pretty straight forward. First, get the WebOne package for your system. In my case it was:</p>
+        <pre>wget https://github.com/atauenis/webone/releases/download/v0.16.0/webone.0.16.0.linux-armhf.deb</pre>
+        <p>Install the package and it's dependencies:</p>
+        <pre>sudo apt install ./webone.0.16.0.linux-armhf.deb</pre>
+        <p>Restart the service:</p>
+        <pre>sudo service webone restart</pre>
+        <p>The configuration file of the service can be found here, edit this to change the settings to your taste:</p>
+        <pre>/etc/webone.conf</pre>
+        <p>Don't forget to restart the WebOne service if you modify the config file.</p>
+        <p>Take note of your Raspberry Pi's IP address (ifconfig) and the Port value in the webone.conf, then go ahead and set those in your web browser on your Mac. In Netscape Navigator 2.0.2, go to Options -> Network Preferences, then select the Proxies tab. Select Manual Proxy configuration and click the View button. To the HTTP Proxy field enter the IP address of your newly configured WebOne Proxy server and it's port, then click OK. In the Network Preferences window the OK button is probably out of screen, so just press Enter to apply the settings and close the window.</p>
+
+        <p><img src="../images/Netscape-proxy.jpg"></p>
+
+        <p>That's all, you can browse the web again!</p>
+
+        <p align="center"><a href="#top">Back to Top</a></p>
+    </div>
+  </div>
+  <script src="../fontswitcher.js"></script>
+</body>
+
+
+<!-- Mirrored from neongod.neocities.org/articles/bluescsiv2-dayna by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 30 May 2025 14:33:39 GMT -->
+</html>

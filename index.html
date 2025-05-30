@@ -1,0 +1,144 @@
+<html lang="en" id="top">
+
+<!-- Mirrored from neongod.neocities.org/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 30 May 2025 14:31:46 GMT -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Approaching planet neon ...</title>
+  <meta name="robots" content="noai, noimageai">
+  <meta name="description" content="Personal website about retro computers, restoration and preservation of old tech.">
+  <meta name="keywords"
+    content="Commodore Amiga, Amiga 500, Macintosh, Macintosh Classic, System 7, Macintosoh Games, Cassette, Tapes, Tracker music, Links">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="stylesheet" href="style.css">
+  <script type="text/javascript">
+    var ua = navigator.userAgent;
+    var oldBrowser = false;
+    if (
+      (ua.indexOf('MSIE') != -1 && parseInt(ua.split('MSIE')[1]) < 9) ||
+      (ua.indexOf('Netscape') != -1 && parseInt(ua.split('index.html')[1]) < 9) ||
+      (ua.indexOf('Opera') != -1 && parseInt(ua.split(' ')[1]) < 10) ||
+      (ua.indexOf('Mozilla') != -1 && parseInt(ua.split('index.html')[1]) < 5) ||
+      (ua.indexOf('iCab') != -1 && parseFloat(ua.split('iCab ')[1]) < 6) ||
+      (ua.indexOf('IBrowse') != -1) ||
+      (ua.indexOf('Voyager') != -1) ||
+      (ua.indexOf('AWeb') != -1)
+    ) {
+      oldBrowser = true;
+    }
+    if (oldBrowser == true) {
+      // Oh, so you're an old browser.
+      // here is a simple HTML for you
+      document.location = "simple.html";
+    }
+
+    function resizeImageMap() {
+      const img = document.getElementById('menuImage');
+      const map = document.querySelector('map[name="menuMap"]');
+      const areas = map.querySelectorAll('area'); 
+
+      const originalWidth = img.naturalWidth;
+      const originalHeight = img.naturalHeight;
+      const currentWidth = img.offsetWidth;
+      const currentHeight = img.offsetHeight;
+      const widthRatio = currentWidth / originalWidth;
+      const heightRatio = currentHeight / originalHeight;
+
+      areas.forEach(area => {
+        const originalCoords = area.dataset.originalCoords.split(',').map(Number); 
+        const scaledCoords = originalCoords.map((value, index) => {
+          return index % 2 === 0
+            ? Math.round(value * widthRatio) 
+            : Math.round(value * heightRatio); 
+        });
+
+        area.coords = scaledCoords.join(','); 
+      });
+    }
+
+    window.onload = () => {
+      const areas = document.querySelectorAll('map[name="menuMap"] area');
+
+      areas.forEach(area => {
+        if (!area.dataset.originalCoords) {
+          area.dataset.originalCoords = area.coords;
+        }
+      });
+
+      resizeImageMap();
+    };
+
+    window.addEventListener('resize', resizeImageMap);
+  </script>
+</head>
+
+<body background="images/stars.gif" text=#ffff99 link=#e6e600 vlink=#b37700>
+  <div class="logo">
+    <picture>
+      <source srcset="images/planet-neon-small.gif" media="(max-width: 768px)">
+      <img src="images/The Solgone World.png" alt="planet neon title">
+    </picture>
+    <picture>
+      <source srcset="images/orb_lavender-small.gif" media="(max-width: 768px)">
+      <img src="images/orb_lavender.gif" alt="Orb divider">
+    </picture>
+
+    <img src="images/Retro shrine.png" alt="Planet Neon" usemap="#menuMap" id="menuImage">
+    <map name="menuMap">
+      <area alt="The Solana Vanishing Act" title="s" href="retroshrine.html" coords="134,141,400,186" shape="rect">
+      <area alt="Museum" title="Museum" href="museum.html" coords="135,285,321,328" shape="rect">
+      <area alt="Guest lounge" title="Guest lounge" href="http://neongod.atabook.org/" coords="137,404,451,446"
+        shape="rect">
+      <area alt="Administration office" title="Administration office" href="administration.html"
+        coords="571,130,849,179" shape="rect">
+      <area alt="Link hub" title="Link hub" href="linkhub.html" coords="881,126,992,242" shape="rect">
+      <area alt="Concert hall" title="Concert hall" href="concerthall.html" coords="612,376,920,417" shape="rect">
+      <area alt="Spaceship" title="Spaceship" href="spaceship.html" coords="655,281,804,359" shape="rect">
+      <area alt="Arcade" title="Arcade" href="arcade.html" coords="533,446,919,494" shape="rect">
+    </map>
+    <div class='info'>
+      <p>Landing on Pumpfun $GONE</p>
+      <p>2025-05-30 CA HERE</p>
+    </div>
+
+    <div class='info'>
+      <hr>
+      <p><a href="http://neongod.atabook.org/"><img src="images/kdt92wK8_400x400.jpg" alt="Guestbook Please Sign" border="0">
+      </p>
+
+    <div class='info'>
+      <p>In the far reaches of the Solana blockchain, there lived a tiny, curious alien named Zylo. Zylo was unlike any other memecoin—shy, introspective, and always dreaming of something more. While other coins chased pumps and hype, Zylo gazed at the stars, wondering if there was a universe beyond the chaos of crypto..</p>
+    </div>
+
+    <noscript>
+      <h1>Planet Neon</h1>
+      <p>Your browser either doesn't support JavaScript or has it disabled.</p>
+      <h2>Navigation</h2>
+      <dl>
+        <dt><a href="retroshrine.html">The Solana Vanishing Act</a></dt>
+        <dd>Retro computing articles focusing on vintage Macs, Commodore Amiga, and others</dd>
+        <dt><a href="museum.html">Museum</a></dt>
+        <dd>The various computers, consoles and gadgets I have in my collection currently or had at some point in time
+        </dd>
+        <dt><a href="concerthall.html">Concert hall</a></dt>
+        <dd>Some of my tracker music, cassettes and my favourite online radios</dd>
+        <dt><a href="arcade.html">Arcade</a></dt>
+        <dd>Videogames related content</dd>
+        <dt><a href="administration.html">Administration</a></dt>
+        <dd>About me and this page</dd>
+        <dt><a href="linkhub.html">Link hub</a></dt>
+        <dd>A collection of interesting and useful websites</dd>
+        <dt><a href="http://neongod.atabook.org/">Guest lounge</a></dt>
+        <dd>There is a guestbook! Don't forget to say Hi!</dd>
+      </dl>
+      <br>
+      <img src="images/planetdistance.gif" alt="planet neon">
+      <br>
+      <p>In the far reaches of the Solana blockchain, there lived a tiny, curious alien named Zylo. Zylo was unlike any other memecoin—shy, introspective, and always dreaming of something more. While other coins chased pumps and hype, Zylo gazed at the stars, wondering if there was a universe beyond the chaos of crypto.</p>
+    </noscript>
+</body>
+
+
+<!-- Mirrored from neongod.neocities.org/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 30 May 2025 14:31:57 GMT -->
+</html>

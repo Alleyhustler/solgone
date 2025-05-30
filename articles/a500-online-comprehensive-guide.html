@@ -1,0 +1,611 @@
+<html lang="en" id="top">
+
+
+<!-- Mirrored from neongod.neocities.org/articles/a500-online-comprehensive-guide by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 30 May 2025 14:34:13 GMT -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landed: The Solana Vanishing Act</title>
+  <meta name="robots" content="noai, noimageai">
+  <meta name="description" content="Personal website about retro computers, restoration and preservation of old tech.">
+  <meta name="keywords"
+    content="Commodore Amiga, Amiga 500, AmigaNOS, Amiga online, Amiga TCP/IP, Miami TCP/IP, Amiga BBS, WiModem232, KA9Q, TermiteTCP, Amiga-PC link, PPP configuration">
+  <script src="../applySavedFont.js"></script>
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body background="../images/stars.gif" text=#ffff99 link=#e6e600 vlink=#b37700>
+
+  <div class="logo">
+    <img src="../images/The Solgone World.png" alt="planet neon title">
+    <img src='../images/orb_lavender.gif' alt="Orb divider">
+  </div>
+
+  <div class="center-container">
+    <div class="titlebox">
+      <img src="../images/fire.gif">
+      <span>The Solana Vanishing Act</span>
+      <img src="../images/fire.gif">
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="left-column column">
+      <p><a href="../retroshrine.html"><b>Back to Base</b></a></p>
+      <p><a href="../index.html"><b>Back to Orbit</b></a></p>
+      <img src="../images/star.gif">
+      <div id="font-selector">
+        <p><label for="fonts">Select Font:</label></p>
+        <select id="fonts">
+          <option value="amiga">Amiga</option>
+          <option value="macintosh">Macintosh</option>
+        </select>
+      </div>
+      <div class="image-container">
+        <p>Building complex:</p>
+        <img src="../images/base-amiga.gif"><br>
+        <p>Base location on planet:</p>
+        <img src="../images/base-location-amiga.gif">
+      </div>
+    </div>
+
+    <div class="right-column column">
+      <h1>Bringing the Amiga 500 online, the comprehensive guide</h1>
+
+      <p>That's a bold title. There are obviously many ways to bring our beloved Amiga 500 online and I can't possibly
+        cover them all in one article. What I will focus on here are the options avaialble with as stock setup of an
+        Amiga 500 as possible.</p>
+      <p>Before going any further, we need to clarify what do we exactly mean by online?
+        Is it online like it was back in 1987 when the Amiga 500 was released or is it online like the <a
+          href="#internettoday">Internet we know
+          today</a>? Let's investigate both scenarios in a bit more detail.</p>
+
+      <h2>1. Back in the day</h2>
+      <p>Online meant dialing in to another computer through a <a
+          href="https://toobnix.org/w/p4ZYu6LUhZXQpP7svcGVy2">modem</a> and a telephone line. Often that other machine
+        was running a <a href="https://en.wikipedia.org/wiki/Bulletin_board_system">Bulletin Board System (BBS)</a>. Can
+        we still do this today? In a way, yes, and I would like to argue that this is the most viable option for stock
+        Amiga 500 owners.</p>
+
+      <h3>What can this be used for?</h3>
+      <p>Many fun things actually. There are old BBS servers that are online again on the telnet protocol and there are
+        new ones too. There are various servers on telnet that provide fun and excitement for us geeks:</p>
+
+      <ul>
+        <li><b>telehack.com:23</b> for example lets you play the classic NetHack game, among many other things. You can
+          even watch Star Wars Episode IV in the terminal!</li>
+        <li>You can play chess on <b>freechess.org:5000</b> or Go on <b>igs.joyjoy.net:6969</b></li>
+        <li>Or a Star Trek themed game on <b>mtrek.com:1701</b></li>
+        <li>Gaming Museum on <b>gt.gamingmuseum.com:23</b> hosts a number of old BBS games ready to play</li>
+        <li>There are numerous servers that provide text based adventure games, MUDs (Multi User Dungeon) RPG games and
+          MUCKs (Multi-User Chat Kingdom) text-based role-playing games designed for social interaction. You can find a
+          more comprehensive list of available servers <a
+            href="https://store.chipkin.com/articles/telnet-list-of-telnet-servers">here</a> and <a
+            href="http://www.mewbies.com/acute_terminal_fun_telnet_public_servers_watch_star_wars_play_games_etc.htm">here</a>.
+        </li>
+        <li>But most importantly, check the largest list of available BBS servers on <a
+            href="https://www.telnetbbsguide.com/bbs/">TelnetBBSguide.com</a>, many updated daily, have a file download
+          section and an active community.</li>
+      </ul>
+
+      <p><img src="../images/atalkIII-starwars.gif"></p>
+
+      <p>If you have an own server in your local network, you can connect to it via telnet and use command line internet
+        tools there.</p>
+
+      <p>There are so called BBS doors, which are applications that provide a connection to other machines from the
+        server running the
+        BBS. Nowadays there are some that offer doors to the outside Internet, so it's possible to run a
+        text based web browser, IRC or email client from the terminal there. One of such is the <a
+          href="https://www.telnetbbsguide.com/bbs/public-electronic-networked-information-system/">
+          Public Electronic Networked Information System</a>, which despite the horrible name, works pretty well and
+        provides Usenet, Gopher, IRC and WWW access. It's neither safe nor nice, but it's possible to access the
+        Internet this way on very low end machines, read the news, check the weather.</p>
+
+      <p><img src="../images/atalkIII-startrek.gif"></p>
+
+
+      <h3>How to connect?</h3>
+
+      <p>There are several ways, but they can be practically distilled into two options:</p>
+      <ol>
+        <li>Connecting the Amiga 500 to a PC via a null modem cable and use a software on the PC side to emulate a
+          modem, so we can dial in to a BBS through the Internet via Telnet. AmigaLove made a <a
+            href="https://www.amigalove.com/viewtopic.php?f=5&amp;t=168&amp;sid=8745c76444d5e4e7138031eeaf3ffd94">very detailed
+            guide on this</a>.</li>
+        <li>Do the same thing with a hardware solution like a <a
+            href="https://www.cbmstuff.com/index.php?route=product/product&amp;product_id=59">WiModem232</a>. It emulates a
+          Hayes compatible modem and can connect directly to your WiFi network.</li>
+      </ol>
+
+      <p>I would really recommend going with the second option as even though it's a bit more expensive, it will result
+        in
+        a much sealmess and nice experience, closer to how it originally was, without the need of poking around with a
+        PC (which has to be next to your Amiga and turned on). As I have such a modem, I'd like to elaborate a bit more
+        on how to set it up.</p>
+
+      <h3 id="wimodem232-setup">Setup the WiModem232</h3>
+      <p>If you've never done this before, no need to panic, it's pretty simple and straight forward. There is also good
+        <a href="https://www.cbmstuff.com/downloads/wimodem/wimodem232_manual.pdf">documentation</a> on the modem and
+        how to set it up.
+      </p>
+      <p>First, you need to plug the modem into the serial port of your Amiga and connect a 5V USB power source to it.
+        Most mobile chargers would do.</p>
+      <p>Then you'll need a terminal software, I recommend A-Talk III, as it runs well from floppy, very simple to setup
+        and what's even better, Marco Papa of Felsina Software made it public domain in 2010. You can grab the <a
+          href="https://www.jottacloud.com/s/0301eaa97b634a046b7ac18b1ba87e960fb">A-Talk III ADF here</a>, and <a
+          href="https://www.jottacloud.com/s/0309496d08206f8468da07093c6b189443e">the manual here</a>. Just boot a
+        Workbench 1.3 floppy up, insert the A-Talk III disk and launch it.</p>
+
+      <p><img src="../images/atalkIII.gif"></p>
+      <p>The Wimodem232 by default starts in a 300 baud mode, so you'll need to set your terminal to match that. Check
+        the rest of the settings in the menu to match the following:<br>
+        Parity - None<br>
+        Stop Bits - 1<br>
+        No. Bits - 8<br>
+        Handshake - RTS/CTS<br>
+        Duplex - Full</p>
+
+      <p><img src="../images/atalkIII-setup.gif"></p>
+
+      <p>Save your settings in the Project menu.</p>
+
+      <p>By typing the command "ati", you can check the status information of the modem:</p>
+
+      <p><img src="../images/wimodem232-1.gif"></p>
+
+      <p>You can set the speed to faster (baud 9600) with:</p>
+      <pre>AT*B9600</pre>
+      <p>Then update your terminal's baud settings to match that.</p>
+      <p>You can save the default configuration of the modem with:</p>
+      <pre>AT&W</pre>
+      <p>So it doesn't get lost in case you reboot or unplug the WiModem232. If you'd ever want to go back to factory
+        defaults, you can issue the command:</p>
+      <pre>AT&F</pre>
+      <p>This won't clear your address book, but it will reset everything else, and set the baud rate back to 300. There
+        are also two emergency reset pads on the bottom side of the modem, so if anything would go wrong, which is
+        unlikely, you can reset the modem by shorting those pads while turning the modem on.</p>
+      <p>It's time to configure the connection to your WIFI router. There are several ways to do this. The modem can
+        serve you a web interface where you can configure the WIFI network from your phone or tablet. To enable this
+        mode, type:</p>
+      <pre>AT*WIFI</pre>
+      <p>Now look at your mobile device and check the WIFI list. An entry called WiModem232 should appear. Click on that
+        and you can configure the modem.</p>
+      <p>Another way is to do it manually from the terminal directly. Issuing the following command will list all the
+        available WIFI networks:</p>
+      <pre>AT*N</pre>
+      <p>Then you can select the one you'd like to connect to with the following command:</p>
+      <pre>AT*NS&lt;number from the list&gt;,&lt;password&gt;
+
+Example:
+AT*NS1,Password123
+    </pre>
+      <p>Or, you can also set your router's SSID directly, with the following command:</p>
+      <pre>AT*SSID&lt;your SSID&gt;,&lt;password&gt;
+
+Example:
+AT*SSIDMYROUTER,Password123
+Note: There is no space between the letters "SSID" and the router's actual SSID.</pre>
+      <p>Now you're connected!</p>
+      <p>You can test if your connection works by connecting a server:</p>
+      <pre>ATDT &lt;server domain or ip&gt;:&lt;port number&gt;
+
+Example:
+ATDT google.com:80</pre>
+      <p>You should see "CONNECTED" on the screen. To hang up the connection, press the “+” key 3 times in a row very
+        quickly, it should respond with saying "OK". Then you can type the command to hang up the connection:</p>
+      <pre>ATH</pre>
+
+      <p>You can also update the firmware of the modem now, it will reboot the modem, but your settings will be kept:
+      </p>
+      <pre>AT*UPDATE</pre>
+
+      <p>And that's all there is to it really! You can connect to various BBS servers now, just pick your favourite.</p>
+
+      <p><img src="../images/atalkIII-bbs.gif"></p>
+
+      <h2 id="internettoday">2. Today's Internet</h2>
+
+      <p>If by Online we mean accessing the actual Internet with applications running on our machine locally, that's a
+        much more
+        complicated problem and we have to awknowledge the limitations of the machine.</p>
+
+      <p>The TCP/IP stack and all the client applications take up too much space and memory to be used from a floppy
+        disk and with 1MB of RAM. Another issue is the Kickstart 1.3. When the Internet started to become more
+        widespread in the 90s,
+        Kickstart 2.0 was already out and most Amiga developers used its features for making network enabled OS-friendly
+        applications.
+        Therefore all of the more advanced TCP/IP stacks on Amiga require at least Kickstart 2.0.</p>
+      <p>Besides Commodore's AS225 TCP/IP stack that came with the A2065 Zorro-II card for the Amiga 2000/3000/4000, the
+        only TCP/IP stack that I'm aware of that runs on Kickstart 1.3 is <a
+          href="https://theory.cs.uni-bonn.de/ppp/part5.html#amigappp">AmigaNOS (Network
+          Operating System)</a>. It is a port of <a href="http://www.ka9q.net/code/ka9qnos/">KA9Q's NOS</a>, a TCP/IP
+        stack made for amateur packet radio systems. It should work on an Amiga 500 with 1Mb RAM and two floppy drives
+        (to skip frequent disk swapping), it supports SLIP/PPP, but none of the more "modern" internet applications will
+        work with it, as it doesn't have a complete bsdsocket.library emulation.</p>
+      <p>It has it's own
+        command-line interface and you can use a few command-line applications like telnet, ftp, smtp, pop3 there. There
+        isn't much documentation on it online, I only found <a
+          href="http://web.tiscalinet.it/iw2fer/a500_nosconf_eng.htm">this one page</a>, which configures it for data
+        exchange between an Amiga and a C64, so I decided to figure it out myself. I managed to set it up and can use
+        the
+        FTP client to transfer files or even browse the Gopherspace with a Gopher client that's using AmigaGuide. If
+        you're interested how to configure it,
+        see my <a href="a500-amiganos.html">AmigaNOS guide here</a>.</p>
+
+      <p>I'm pretty sure however that it's not what most people mean when they say they'd like to bring their Amiga 500
+        online.</p>
+
+      <p>So what's the <b>bare minimum</b> needed to be able to use the graphical Internet applications (or at least
+        some of
+        them), from an Amiga 500?</p>
+
+      <p>You could have guessed it already:<br>Kickstart 2.0+, some extra memory and realistically, a hard drive.</p>
+
+      <p>If you don't have a hard drive, you can try TermiteTCP, which runs from a single floppy. I prepared a disk for
+        you, <a href="#termitetcp">see below</a>. But to run some applications along it like a web browser, you'll need
+        more memory and a hard drive.</p>
+
+      <p>My choice was a <a href="https://bigbookofamigahardware.com/bboah/product.aspx?id=534">Commodore A590</a>,
+        which was the official hard drive offering from Commodore for the Amiga 500.
+        It's a SCSI controller with a maximum of 2MB extra memory expansion inside. There were other manufacturers who
+        offered hard drives too, like AlfaData/BSC with their <a
+          href="https://bigbookofamigahardware.com/bboah/product.aspx?id=522">AlfaPower 500</a>
+        and GVP with the <a href="https://bigbookofamigahardware.com/bboah/product.aspx?id=1784">A500 HD+</a>. Today we
+        also have the option
+        to buy a new expansion board that has everything included, like an <a
+          href="https://icomp.de/shop-icomp/en/shop/product/ACA500plus.html">ACA500+</a> with a <a
+          href="https://icomp.de/shop-icomp/en/produkt-details/product/x-surf-500.html#filter=*">X-Surf 500</a> network
+        card. But for me the
+        appeal in all this was the challenge to make it work with original and authentic hardware, and find the most
+        basic and authentic setup possible,
+        so this guide tries to cover that scenario.</p>
+
+      <p>The obvious question pops up, if we can use the <a
+          href="https://www.cbmstuff.com/forum/showthread.php?tid=440">WiModem232 with a TCP/IP stack</a>. In theory, it
+        should work with a PPP/SLIP connection, but in practice, I don't know of anyone who managed to make it work,
+        including myself. If you do know someone, let me know!</p>
+
+      <p>Before tackling the challenge on bringing the system online, we need to solve two things:</p>
+      <ol>
+        <li>Transfering files to the Amiga</li>
+        <li>Having a Kickstart 2.0+</li>
+      </ol>
+
+      <p>There are several options for both. But without an expansion board, your options are limited to either
+        transfering
+        files with the help of <a href="https://www.amigaforever.com/ae/">AmigaExplorer</a> via a null modem cable (<a
+          href="https://www.ebay.co.uk/itm/361535182471?hash=item542d2d1687:g:vHwAAOSwPc9WvI1U&amp;amdata=enc%3AAQAIAAAA4DmH8PsioZg52l1kjzN2MLM0wVv%2BQx8qOA0wr%2Bi6L%2BCEicN9jkMJjUD9WsB%2F6jt63ns26oHbjMBD33xTtAHdYdN8kSIjHR2ySfkU3TItJGgQHDjD6%2BAFej1QaGlsG6B%2F%2Fd90AC2vSUDJkSkt%2B%2FI30GjFfZEgnD0Q5aHUg%2BP%2BIoRNaIj%2BbE34Yh9zIjbv%2BrQEPUwdVls540xrOIMprI8FzSqMVkFms0294y1i1kcWT8TxMrK%2FsW%2FJCCWXU7V2r%2Brp4JUm0vVdHr35jE%2FjUo2qK4o3y5OMVuuHRI46HObKuJm%2B%7Ctkp%3ABk9SR4DXtsvkYg">here</a>
+        or <a href="https://amigastore.eu/en/275-cable-null-modem-amiga.html">here</a>) or with some compromise for a
+        new hardware,
+        with a <a href="https://amigastore.eu/en/323-usb-floppy-emulator-gotek.html">GOTEK floppy emulator</a>. There is
+        also the SDBox (SD card reader for the Parallel port), but I haven't tried it, so I can't recommend it yet.
+        I tried both the null modem cable and the GOTEK though, and can recommend going for both, as you'll need the
+        null modem cable anyway, and having a GOTEK makes life so much easier (just think trying out new games and
+        demos). I installed my GOTEK in an external floppy case, so it looks nice.</p>
+
+      <p>Here is <a href="https://www.amigalove.com/viewtopic.php?t=15">AmigaLove's excellent guide on AmigaExplorer</a>
+        and how to transfer files with a null modem cable. It was written for an Amiga 1200, but it works on Amiga 500
+        as well.</p> But you can also do it with a <a href="a500-gotek-file-transfer.html">GOTEK drive by using an
+        emulator</a>. Just insert an empty ADF into the emulator's virtual floppy drive and copy stuff on it, then copy
+      the ADF image to your GOTEK's USB stick.
+
+      <p>For the Kickstart, you also have two options. You can buy a new
+        Kickstart ROM (there are <a
+          href="https://sordan.ie/product/550/dual-double-kickstart-rom-13--31-amiga-500-600-2000-switcher/">DUAL
+          ROMs</a> too, where you can switch between
+        Kickstart 1.3 and 3.1 with a physical switch to keep your system backwards compatible), or you can load the new
+        Kickstart from a file, by mapping it to a memory
+        location (soft-kick). I wanted to keep the original 1.3 chip in my Amiga 500, so I took the
+        soft-kick route. <a href="a500-soft-kick-dual-boot.html">Click here for a guide on how to set it up</a>, and
+        optionally, how to make a
+        dual-boot setup between Workbench 1.3 and 3.1.</p>
+
+      <h3>Now finally,</h3>
+      <p>Here is all that's needed to bring our Amiga 500 to the Internet:</p>
+
+      <ul>
+        <li>An Amiga 500 with at least an 512Kbyte memory expansion. Or more if you're taking the soft-kick route. You
+          can also do a 1MB Chip RAM mod, if you have a Rev.6A motherboard with a Fat Agnus (8372A) chip, that supports
+          1Mb Chip RAM.</li>
+        <li>A way to transfer files between a PC and the Amiga (a GOTEK or a null modem cable and the AmigaExplorer
+          software)</li>
+        <li>Kickstart 2.0+</li>
+        <li>A null modem cable to connect our Amiga to a PC which will act as a PPP server.</li>
+        <li>A whatever PC running Linux</li>
+      </ul>
+      <p>Optional (but recommended):</p>
+      <ul>
+        <li>A hard drive with some more extra memory (2MB will do) to install Workbench and applications.</li>
+      </ul>
+
+      <h2 id="amiga-pc-ppp">Amiga-PC PPP config</h2>
+
+      <p>On the PC side: I used a Raspberry Pi, which is always on and has a pppd running. It's connected to the Amiga
+        via a
+        NullModem cable and a serial to USB adapter. An older PC that has a 9-pin female serial port would also do the
+        job and you can skip the adapter. But you can find serial to USB adapters all over eBay for a very low cost.</p>
+
+      <p>On the Amiga side: The only thing we need is a TCP/IP stack and some applications. You'll see that's a
+        challenge
+        in itself, as most Internet applications barely work on a 68000 CPU and 2MB of RAM.</p>
+
+      <h2>Configure the PC side</h2>
+      <p>Let's prepare the PC side first. I was using Raspberry Pi OS Lite Bullseye:</p>
+
+      <p>Install ppp if it isn't already present:</p>
+      <pre>sudo apt install ppp</pre>
+
+      <p>Enable IP forwarding:</p>
+      <pre>sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"</pre>
+
+      <p>Create a script that will set the Network Address Translation rules and start the ppp daemon:
+      <p>
+      <pre>nano start-amiga-ppp.sh</pre>
+      <p>Paste the following to it:</p>
+      <pre>#!/usr/bin/env bash
+# Caution, the following two commands will clear all rules!
+# Comment them out if you have rules already configured and you don't want that
+        
+sudo iptables -F
+sudo iptables -t nat -F
+        
+# Configure the Network Address Translation (NAT) between PPP and your local network.
+# My Raspberry Pi is connected to my local network via Wifi, so I'm using wlan0
+# If you're connected via ethernet, update the commands to use eth0 instead)
+        
+sudo iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE
+sudo iptables -A FORWARD -i wlan0 -m state --state RELATED,ESTABLISHED -j ACCEPT
+sudo iptables -A FORWARD -i ppp0 -o wlan0 -j ACCEPT
+        
+# Start the ppp connection
+sudo pppd file /etc/ppp/amiga</pre>
+
+      <p>Set it executable:</p>
+      <pre>chmod +x start-amiga-ppp.sh</pre>
+
+      <p>Create the /etc/ppp/amiga configuration file for pppd:</p>
+      <pre>sudo nano /etc/ppp/amiga</pre>
+
+      <p>Paste the following contents to it:</p>
+
+      <pre># Enable connection debugging facilities
+debug
+
+# Don't detach from the controlling terminal. Without this option, 
+# if a serial device other than the terminal on the standard input is specified, 
+# pppd will fork to become a background process.
+nodetach
+
+# Serial device is the device used to connect to the Amiga
+# In my case it's the USB-Serial adapter which I used to connect the null modem cable 
+# to the Raspberry Pi's USB port.
+/dev/ttyUSB0
+
+# Baud (19200 is the maximum the Amiga 500 can handle with the serial.device)
+19200
+#38400
+#57600
+#115200
+
+# No authentication required
+noauth
+
+# Don't use the modem control lines. With this option, pppd will ignore 
+# the state of the CD (Carrier Detect) signal from the modem and will not 
+# change the state of the DTR (Data Terminal Ready) signal. 
+# This is the opposite of the modem option.
+local
+
+# Local and remote IP addresses and the netmask
+# The Raspberry Pi will be reachable on 10.0.0.1 from the Amiga and 
+# the 10.0.0.2 will be the Amiga's address. They're are not the same as your main 
+# local network's address and they're arbitrary, you can make them up as you like.
+# Your local network is likely in the 192.168.0.1 or similar range. 
+# That's why we configured the NAT to translate between these two networks.
+10.0.0.1:10.0.0.2
+netmask 255.255.255.0
+
+# Enables the "passive" option in the LCP. With this option, pppd will
+# attempt to initiate a connection; if no reply is received from the
+# peer, pppd will then just wait passively for a valid LCP packet from
+# the peer (instead of exiting, as it does without this option).
+passive
+
+# Add an entry to this system's ARP [Address Resolution Protocol]
+# table with the IP address of the peer and the Ethernet address of this system.
+# This will have the effect of making the peer appear to other systems 
+# to be on the local ethernet.
+proxyarp
+
+# Do not exit after a connection is terminated, try reconnecting instead
+persist
+
+# Use software flow control (i.e. XON/XOFF) to control the flow of data on the serial port.
+# Much slower, better to go with RTS/CTS hardware flow control, which is the default
+#xonxoff
+</pre>
+
+      <p>Run the start-amiga-ppp.sh script so that the ip forwarding rules are set and the interface is up.</p>
+
+      <p>Optional, we can set the PPP connection up as a service:</p>
+
+      <p>Create /etc/systemd/system/ppp-amiga.service with these contents:</p>
+      <pre>
+[Unit]
+Description=Amiga PPP networking
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/pppd file /etc/ppp/amiga
+
+[Install]
+WantedBy=multi-user.target</pre>
+
+      <p>Reload the services, enable and start the connection:</p>
+      <pre>
+sudo systemctl daemon-reload
+sudo systemctl enable ppp-amiga
+sudo systemctl start ppp-amiga</pre>
+
+
+      <pre>sudo systemctl status ppp-amiga
+ppp-amiga.service - Start PPP for Amiga networking
+Loaded: loaded (/etc/systemd/system/ppp-amiga.service; enabled; vendor preset: enabled)
+Active: active (running) since Sat 2023-10-07 00:04:16 CEST; 5s ago
+Main PID: 3324 (pppd)
+Tasks: 1 (limit: 1599)
+CPU: 29ms
+CGroup: /system.slice/ppp-amiga.service
+  3324 /usr/sbin/pppd file /etc/ppp/amiga
+
+Oct 07 00:04:16 pi pppd[3324]: using channel 19
+Oct 07 00:04:16 pi pppd[3324]: using channel 19
+Oct 07 00:04:16 pi pppd[3324]: Using interface ppp0
+Oct 07 00:04:16 pi pppd[3324]: Using interface ppp0
+Oct 07 00:04:16 pi pppd[3324]: Connect: ppp0 <--> /dev/ttyUSB0
+Oct 07 00:04:16 pi pppd[3324]: Connect: ppp0 <--> /dev/ttyUSB0
+Oct 07 00:04:16 pi pppd[3324]: sent [LCP ConfReq id=0x1</pre>
+
+      <p>Don't forget that the iptables forwarding rules are not persistent by default and need to be re-applied after
+        reboot. You can make them persistent with iptables-persistent.</p>
+      <p>Check the rules on the system:</p>
+      <pre>sudo iptables -L</pre>
+      <p>Install iptables-persistent:</p>
+      <pre>sudo apt install iptables-persistent</pre>
+      <p>Save the rules:</p>
+      <pre>sudo iptables-save > /etc/iptables/rules.v4</pre>
+
+      <h2>Configure the Amiga side</h2>
+
+      <h3 id="termitetcp">Floppy only systems</h3>
+      <p>There is a lightweight TCP/IP stack called TermiteTCP by Oregon Research which comes with PPP support, although
+        the demo on Aminet has PPP and bsdsocket.library support turned off, so it's pretty much useless, but as all
+        Oregon Research products <a href="https://eab.abime.net/showthread.php?t=54913">became public domain</a> more
+        than 10 years ago, I dared to prepare a <a
+          href="https://www.jottacloud.com/s/03030b6077c3132475aa5980e57906d6068">floppy installation of TermiteTCP
+          version 1.50</a>, which you can grab.</a> Here is the <a
+          href="https://www.jottacloud.com/s/030946fd41b4b424dc7b106f12a7a166b0b">TermiteTCP version 1.60 installer
+          disk</a> too.
+
+      <p>It's very easy to setup, although not very stable, so I can't really recommend it. It was dropping the
+        connection after a few minutes despite increasing the connection timeout and verification interval, but if you
+        want to play around with it, here is how I set it up:</p>
+
+      <p>Launch TermiteTCP68k and open the connection settings from the menu. You can leave most things at default here,
+        just make sure it matches the pppd settings on your PC's side:</p>
+      <p><img src="../images/termitetcp_01.gif"></p>
+
+      <p>Open the network settings. Set the local IP to 10.0.0.2 (amiga), remote to 10.0.0.1 (pc), the DNS server to
+        your router's IP, which is 192.168.10.1 in my case. You can set the alternate DNS to 10.0.0.1 (pc) and pick a
+        default domain, I typed just a500 there. </p>
+      <p><img src="../images/termitetcp_02.gif"></p>
+
+      <p>Click connect. TermiteTCP will ask if you want a direct serial connection, say Yes.</p>
+      <p><img src="../images/termitetcp_03.gif"></p>
+
+      <p>That's it, you're online. You can use the FTP or Telnet client provided on the disk to connect to the outside
+        world.</p>
+      <p><img src="../images/termitetcp_04.gif"></p>
+
+      <p>Unfortunately you can't run a web browser without a hard drive, as all graphical browsers require either
+        ClassAct or MUI and several libraries to be installed (even <a
+          href="https://www.jottacloud.com/s/0305741f9c5c71349f89ecde84dfbbd2d24">AMosaic</a> needs MUI).</p>
+
+      <h3>With a hard drive</h3>
+
+      <p>Now you have more options. <a href="a500-soft-kick-dual-boot.html">Boot into Workbench 3.1</a> and have an <a
+          href="http://aminet.net/package/util/arc/lha">Lha</a> utility at hand.</p>
+
+      <p>I went with the demo version of the Miami 3.0b TCP/IP stack, as I used it back in the day, it has PPP support
+        built-in (as opposed to AmiTCP) and can be configured easily from GUI. The demo version lets you stay online for
+        60 minutes, which is enough for this test and casual use. Unfortunately there is no way to obtain the Miami
+        license from legal sources, but if you want to try a TCP/IP stack that's still supported, <a
+          href="http://roadshow.apc-tcp.de/index-en.php">RoadShow</a> is available from APC&TCP for 25 EUR, and it runs
+        on 68000 and has PPP support built-in also. I haven't tried it, but might give it a go later.</p>
+
+      <p>Install the following stuff and their dependencies on your Amiga if you don't have them already:</p>
+      <ul>
+        <li>Miami3.0b (<a href="http://aminet.net/package/comm/tcp/Miami32b2-main">main archive</a> and <a
+            href="http://aminet.net/package/comm/tcp/Miami32b-000">68000 archive</a>, install it with the GTLayout GUI,
+          which is more lightweight than MUI)</li>
+        <li><a href="http://aminet.net/comm/misc/baudbandit1.4b.lha">Baudbandit 1.4b</a> (you can get higher speeds by
+          replacing the original serial.device)</li>
+        <li><a href="http://aminet.net/comm/tcp/AmiFTP.lha">AmiFTP</a> (free and lighter than AmFTP, but requires <a
+            href="http://aminet.net/util/libs/mui38usr.lha">MUI</a> and <a
+            href="http://aminet.net/util/libs/ReqToolsUsr.lha">ReqTools</a>)</li>
+        <li>AWeb 3.5.09-68000 (<a href="http://aminet.net/comm/www/aweb_3_5_091.lha">main archive</a> and <a
+            href="http://aminet.net/comm/www/AWeb-3.5.09-68000.lha">68000 archive</a>, requires <a
+            href="http://aminet.net/dev/gui/ClassAct2Demo.lha">ClassAct</a>)</li>
+        <li><a href="http://aminet.net/comm/www/Voyager.lha">Voyager 2.70</a> (another web browser, nicer than AWeb, but
+          requires MUI.)</li>
+        <li><a href="http://aminet.net/package/comm/irc/amirc_362_68000">AmIRC 3.6.2</a> (68000 version, but you might
+          also want to look into older AmIRC versions that are faster)</li>
+      </ul>
+
+      <h4>Configure Miami PPP connection</h4>
+      <p>Open the interface settings and set it up like this. Using built in serial PPP/CSLIP, Baud 19200 (same that you
+        set in pppd on the PC side), static IP address 10.0.0.2 (the Amiga 500's IP):</p>
+      <p><img src="../images/miami_ppp_01.gif"></p>
+
+      <p>Go to the TCP/IP settings and set the hostname, real name, username, leave everything else unchecked:</p>
+      <p><img src="../images/miami_ppp_02.gif"></p>
+
+      <p>In the Modem settings and check the NullModem option:</p>
+      <p><img src="../images/miami_ppp_03.gif"></p>
+
+      <p>The PPP settings remain default, it looks like this:</p>
+      <p><img src="../images/miami_ppp_04.gif"></p>
+
+      <p>Open the Database settings and select the DNS Servers option in the Network Database. Then click Add and enter
+        your router's local address, which is in my case 192.168.10.1 and also the PC's address which we configured to
+        10.0.0.1 in the pppd settings:</p>
+      <p><img src="../images/miami_ppp_05.gif"></p>
+
+      <p>That's all there is to it, save the configuration as default from the menu, and you're ready to test it. Click
+        Online and hope for the best. If you did everything right, it should go online. You can open a new CLI window,
+        go to miami: and check if ping works to 10.0.0.1, then to an external address by typing:</p>
+      <pre>miamiping www.google.com</pre>
+      <p><img src="../images/miami_ping.gif"></p>
+
+      <p>If everything works well, you can try out the BaudBandit device to get higher speeds. First, install BaudBandit
+        on your Amiga. Then, set a higher baud rate in the pppd on the PC side (57600 for example) and restart the
+        service. In Miami, open the Interface settings, change the interface type to "serial driver" and type in
+        BaudBandit.device (pay attention to upper and lower cases, it's case sensitive!). Set the speed to the same you
+        set in pppd, the flow control to RTS/CTS (same as in pppd), and serial mode 81N. All the rest is the same as
+        before.</p>
+      <p><img src="../images/miami_ppp_06.gif"></p>
+
+      <p>On my system (1MB Chip RAM, 2MB Other RAM), I have 3-400Kbyte free memory after launching either AWeb or
+        Voyager (while Miami is online with the GUI closed). It's possible to open a simple website though! Aminet and
+        Frogfind.com works just fine. Getting a physical dual Kickstart ROM would help a bit, saving another 0.5MB of
+        memory, but forget about pages that are image heavy or require SSL, that's way over the capabilities of this
+        setup. It's painfully slow and not what this machine was intended for, but it works! If you want to visit sites
+        that are forcing https (most sites do today), you can install a <a
+          href="../bluescsiv2-dayna.html#webone">WebOne proxy</a> on your Linux machine along the
+        pppd, which can convert all https traffic to http and do other cool things to make the modern web more
+        accessible from your Amiga.</p>
+
+      <p><img src="../images/voyager.gif"></p>
+
+      <p>With BaudBandit you can go up to 57600 baud speed on a 4 color screen, so I've been using that for FTP
+        transfers. It doesn't work on a 16 color screen though (starts to drop packages), so you have to choose between
+        speed or a more "colorful" browsing experience.</p>
+
+      <p><img src="../images/amiftp.gif"></p>
+
+      <p>What am I using all this for then? Chatting with friends on IRC brings back memories, and it's nice to be able
+        to get software from Aminet or other places. I have an FTP server on my RaspberryPi for easy file exchange, and
+        I can also backup files from the Amiga to the FTP. All the WB3.1 screenshots in this guide were grabbed on my
+        Amiga (with <a href="http://aminet.net/package/util/cdity/CRSnap">CRSnap</a>) and transferred this way.</p>
+
+      <p><img src="../images/amirc.gif"></p>
+      <p align="center"><a href="#top">Back to Top</a></p>
+    </div>
+  </div>
+  <script src="../fontswitcher.js"></script>
+</body>
+
+
+<!-- Mirrored from neongod.neocities.org/articles/a500-online-comprehensive-guide by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 30 May 2025 14:34:21 GMT -->
+</html>

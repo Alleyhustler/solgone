@@ -1,0 +1,222 @@
+<html lang="en" id="top">
+
+
+<!-- Mirrored from neongod.neocities.org/articles/odv-gbs-c by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 30 May 2025 14:33:39 GMT -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landed: The Solana Vanishing Act</title>
+  <meta name="robots" content="noai, noimageai">
+  <meta name="description" content="Personal website about retro computers, restoration and preservation of old tech.">
+  <meta name="keywords"
+    content="ODV-GBS-C, Mcbazel, scan converter, scandoubler, ODV-II, upscaler, GameCube, Amiga, Commodore, C64, Composite, S-Video, SCART">
+  <script src="../applySavedFont.js"></script>
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body background="../images/stars.gif" text=#ffff99 link=#e6e600 vlink=#b37700>
+
+  <div class="logo">
+    <img src="../images/The Solgone World.png" alt="planet neon title">
+    <img src='../images/orb_lavender.gif' alt="Orb divider">
+  </div>
+
+  <div class="center-container">
+    <div class="titlebox">
+      <img src="../images/fire.gif">
+      <span>The Solana Vanishing Act</span>
+      <img src="../images/fire.gif">
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="left-column column">
+      <p><a href="../retroshrine.html"><b>Back to Base</b></a></p>
+      <p><a href="../index.html"><b>Back to Orbit</b></a></p>
+      <img src="../images/star.gif">
+      <div id="font-selector">
+        <p><label for="fonts">Select Font:</label></p>
+        <select id="fonts">
+          <option value="amiga">Amiga</option>
+          <option value="macintosh">Macintosh</option>
+        </select>
+      </div>
+      <div class="image-container">
+        <p>Building complex:</p>
+        <img src="../images/base-amiga.gif"><br>
+        <p>Base location on planet:</p>
+        <img src="../images/base-location-amiga.gif">
+      </div>
+    </div>
+
+    <div class="right-column column">
+      <h1>Mcbazel ODV-GBS-C scan converter and ODV-II Composite/CVBS/S-Video adapter review</h1>
+
+      <p>There are several upscalers and adapters on the market that make it possible to connect old computers and video
+        game systems to modern TVs. I decided to buy the <a href="https://www.odv-gbsc.com/">Mcbazel ODV-GBS-C</a> scan
+        converter and upscaler with an <a
+          href="https://www.flashbackltd.com/products/odv-ii-component-cvbs-s-video-to-component-converter-for-retro-gaming-console">ODV-II
+          Composite adapter</a>. They can be found at several retailers, I decided to go with Amazon Sweden for the
+        quick shipping and no import tax. My choice was motivated by the number of features and connectivity options,
+        availability and the reasonable cost.</p>
+
+      <p>I have several systems with different outputs, that I wanted to be able to connect to my TV, which happens to
+        have only HDMI inputs. I have a Sega MegaDrive and a Nintendo GameCube with HD Retrovision SCART cables, a
+        Nintendo Wii with a component cable, a Commodore 64 that has a composite output (or S-Video at best) and a
+        Commodore Amiga that outputs RGB via a SCART cable.
+        This setup covers all of them.</p>
+
+      <h2>ODV-GBS-C</h2>
+
+      <p>The <a href="https://github.com/ramapcsx2/gbs-control">GBS-Control</a> is an open source project to modify and
+        improve the Tvia Trueview5725 based GBS8200 upscaler, which was used in some arcade machines and make it into a
+        generic and awesome upscaler for retro gaming.</p>
+
+      <p><img src="../images/odv-gbsc-3.jpg"></p>
+
+      <p>It features:</p>
+      <ul>
+        <li>very low lag</li>
+        <li>sharp and defined upscaling, comparing well to other expensive units</li>
+        <li>no synchronization loss switching 240p/480i (output runs independent from input, sync to display never drops
+          as opposed to OSSC)</li>
+        <li>on demand motion adaptive deinterlacer that engages automatically and only when needed</li>
+        <li>works with almost anything: 8 bit consoles, 16/32 bit consoles, 2000s consoles, home computers, etc</li>
+        <li>control interface via web browser (creates a WIFI hotspot)</li>
+        <li>good color reproduction with auto gain and auto offset for the tripple 8 bit @ 160MHz ADC</li>
+        <li>optional bypass capability to, for example, transcode Component to RGB/HV in high quality</li>
+        <li>downscaling, to display modern systems on older screens and CRTs (HD to 240p)</li>
+      </ul>
+
+      <p>ODV stands for Original Draw Video and it's the branding used by the chinese manufacturer Mcbazel, that made an
+        end-user product from the open source project. But of course, you can build your own if you want to. They also
+        make a composite adapter with the name ODV-II composite, in the same orange case design, which can be used to
+        add the missing composite input option to the GBS-C (or any other upscaler for that matter).</p>
+
+      <p>Let's see what's in the box and set it up:</p>
+
+      <p><img src="../images/odv-gbsc-4.jpg"></p>
+
+      <p>The unit itself looks well built, the plastic is decent quality and they even added rubber feet to both the
+        ODV-GBS-C and the ODV-II composite adapter.</p>
+
+      <p><a href="../images/odv-gbsc-2.jpg"><img src="../images/odv-gbsc-2s.jpg"></a></p>
+
+      <p>There is a VGA pass connector and a SCART connector in the front of the unit, with a 3 state selector switch
+        that lets you choose the type of the input coming from the SCART connector, between YPBPR/VGA/RGBS, RGBS or
+        RGsB. On the left side the component video and audio input RCA jacks, on the right side the DC power and
+        micro-USB power connectors can be found. The back side of the unit features a VGA out and a HDMI out port, along
+        with a 3.5mm audio out jack. The GBS-C requires more power than what my Samsung TV provides, so it has to be
+        powered either by it's own power supply or a USB power supply.</p>
+
+      <p>The setup is very straightforward, just plug in the power, connect the TV to the HDMI port and your equipment
+        to any of the inputs. Then turn the unit on. The ODV-GBS-C auto detects the input. It has an LCD screen and some
+        control nobs you can play around with. You can fine tune the color saturation with the RGB nobs and move around
+        the menu and select (press) with the fourth nob.</p>
+
+      <p>ODV-GBS-C disassembled (Image by MSX.org):</p>
+      <p><a href="../images/ODV_GBS-C_PCB.jpg"><img src="../images/ODV_GBS-C_PCBs.jpg"></a></p>
+
+
+      <p>The menu is simple. It allows you to select an output resolution, load a predefined preset, do a factory
+        reset/restart and view the current output settings. The more advanced settings are in the web UI.</p>
+
+      <p>The GBS-C provides a WIFI hotspot where it's configuration interface can be reached. It appears as
+        <b>gbscontrol</b> in your network list. The default <b>password is “qqqqqqqq”</b>. Once you're connected, open a
+        browser and a navigate to <b>192.168.4.1</b></p>
+
+      <p>Here you can create, modify and delete presets, align and scale the image to fit (if needed), enable scanline
+        emulation and fine tune some more advanced stuff. The UI provides a good explanation of all options if you click
+        on the question mark.</p>
+      <div class="image-row">
+        <a href="../images/odv-gbsc-5.jpg"><img src="../images/odv-gbsc-5s.jpg"></a><a
+          href="../images/odv-gbsc-6.jpg"><img src="../images/odv-gbsc-6s.jpg"></a><a
+          href="../images/odv-gbsc-7.jpg"><img src="../images/odv-gbsc-7s.jpg"></a>
+      </div>
+      <p>The scanline emulation allows for different strengths of scanlines and some other fine tuning like subtle
+        sharpening of lines. I kept coming back to the lightest scanline option, as for me it made the low res images
+        much more pleasant to view on the huge screen. The scanline emulation works with 240p inputs only and is
+        automatically turned off for the more modern, higher resolution inputs.</p>
+
+      <p>The only setting I changed (turned on, it's off by default) in the advanced panel was the FrameTime Lock. It
+        keeps the input and output timings aligned, fixing the horizontal tear line (raster line) that can sometimes
+        appear.</p>
+
+      <p>My first impression is that the image looks great. I tested it with a Sega Mega Drive 1 (HD retrovision SCART
+        cable), a Nintendo GameCube (AV output with a HD retrovision SCART CSYNC cable), an Amiga 500 with an RGB-SCART
+        cable, a Nintendo Wii with a component cable, and a Commodore 64 using the ODV-II composite-to-component
+        adapter, connecting the C64 with a composite cable. In most cases upscaling to 1080p or 1280/960 gave the best
+        result and what my Samsung TV could handle.</p>
+
+      <p>I've been running it for about an hour during my test, the unit got warm, but not really hot. The image is
+        sharp and clear, the colors seem correct, the scrolling is smooth, there is no raster line after turning on the
+        FrameTime lock and I couldn't notice any input lag. The only issue I discovered was with the Wii, where with the
+        interlaced resolutions the screen sometimes went black for a second. It doesn't happen in 480p though. I
+        probably I need to play around with the settings to solve that. Overall, I'm very satisfied with the purchase so
+        far.</p>
+
+      <p>Here are some screenshots with the various inputs, with scanline emulation enabled and disabled:</p>
+
+      <p><a href="../images/odv-gbsc-10.jpg"><img src="../images/odv-gbsc-10s.jpg"></a><br><small>SoulCalibur running on
+          a GameCube, using the AV output with a HD Retrovision SCART cable, upscaled to 1080p.</small></p>
+
+      <p><a href="../images/odv-gbsc-13.jpg"><img src="../images/odv-gbsc-13s.jpg"></a><br><small>Sonic 2 running on a
+          MegaDrive 1, using a HD Retrovision SCART cable, upscaled to 1080p, scanline emulation (level1).</small></p>
+
+      <p><a href="../images/odv-gbsc-11.jpg"><img src="../images/odv-gbsc-11s.jpg"></a><br><small>Super Street Fighter
+          II running on a MegaDrive 1, using a HD Retrovision SCART cable, upscaled to 1080p, scanline emulation
+          (level1).</small></p>
+
+      <p><a href="../images/odv-gbsc-12.jpg"><img src="../images/odv-gbsc-12s.jpg"></a><br><small>Closeup of Ryu, with
+          scanlines.</small></p>
+
+      <p><a href="../images/odv-gbsc-15.jpg"><img src="../images/odv-gbsc-15s.jpg"></a><br><small>Alien 3 running on an
+          Amiga 500, using an RGB-SCART cable, upscaled to 1080p, scanline emulation off.</small></p>
+
+      <p><a href="../images/odv-gbsc-14.jpg"><img src="../images/odv-gbsc-14s.jpg"></a><br><small>Closeup of Alien 3,
+          scanline emulation off.</small></p>
+
+      <h2 id="odvii">ODV-II Composite/CVBS/S-Video adapter</h2>
+
+      <p>This small adapter lets you connect composite sources to the scan converter. It's USB 5V powered and can run
+        from your TV's powered USB port, if it has one. It runs just fine from my Samsung TV's USB port which provides
+        1A. There are 3 buttons, a Power On/OFF switch, an Input selection and a Fuction selection button. The input
+        selection switches between the Y/PB/PR, CVBS and S-Video inputs, while the Funtion selection toggles between
+        smoothing/video-fiter options, which I found quite useless.</p>
+
+      <p><img src="../images/odv-ii-2.jpg"></p>
+
+      <p>I tested the adapter with a Commodore 64, with a regular composite cable. The CVBS RCA jack went into the
+        ODV-II, the L/R audio jacks into the ODV-GBS-C. I was pleased with the result. The image was good enough for
+        enjoying some games and the text was readable. For a better image quality I will buy an S-Video cable for the
+        C64 eventually.</p>
+
+      <p><a href="../images/odv-ii-3.jpg"><img src="../images/odv-ii-3s.jpg"></a></p>
+
+      <p>One thing that could have been improved in the design that the order of the component out RCA jacks on the
+        ODV-II and the component input RCA jacks on the GBS-C could have been mirrored, so they could be connected via a
+        male-male RCA plug instead of a cable, "tying" the two units together to reduce some cabling clutter.</p>
+
+      <p><img src="../images/odv-gbsc-1.jpg"></p>
+
+      <p>ODV-II disassembled (Image by Nightfall Crew):</p>
+
+      <p><a href="../images/odv-ii-1.jpg"><img src="../images/odv-ii-1s.jpg"></a></p>
+
+      <p>Screenshots using a Commodore 64 with ODV-II + ODV-GBS-C:
+
+      <p><a href="../images/odv-ii-gbsc-1.jpg"><img src="../images/odv-ii-gbsc-1s.jpg"></a><br><small>Usagi Yojimbo
+          (Samurai Warrior) running on a C64, using a composite cable, scanline emulation (level1).</small></p>
+
+      <p><a href="../images/odv-ii-gbsc-2.jpg"><img src="../images/odv-ii-gbsc-2s.jpg"></a><br><small>Turrican 2 running
+          on a C64, using a composite cable, upscaled to 1080p, scanline emulation off.</small></p>
+
+      <p align="center"><a href="#top">Back to Top</a></p>
+    </div>
+  </div>
+  <script src="../fontswitcher.js"></script>
+</body>
+
+
+<!-- Mirrored from neongod.neocities.org/articles/odv-gbs-c by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 30 May 2025 14:33:55 GMT -->
+</html>
